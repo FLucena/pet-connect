@@ -1,20 +1,27 @@
 import React from 'react';
 import ModeSelector from './ModeSelector';
-
+import Logo from './Logo';
 const HomeContent: React.FC = () => {
   return (
     <div className="bg-light">
       {/* Hero Section */}
       <section className="py-5">
-        <div className="container text-center py-5">
-          <h1 className="display-4 fw-bold mb-4">
-            Conectando Refugios con Familias Amorosas
-          </h1>
-          <p className="lead text-muted mb-5 mx-auto" style={{ maxWidth: '600px' }}>
-            Pet Connect es una plataforma que facilita la adopción responsable de mascotas,
-            conectando refugios de animales con personas que buscan dar un hogar amoroso
-            a un nuevo miembro de la familia.
-          </p>
+        <div className="container py-5">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-md-6 d-flex justify-content-center justify-content-md-end mb-4 mb-md-0">
+              <Logo />
+            </div>
+            <div className="col-12 col-md-6 text-center text-md-left d-flex flex-column align-items-center align-items-md-start">
+              <h1 className="display-4 fw-bold mb-4">
+                Conectando Refugios con Hogares
+              </h1>
+              <p className="lead text-muted mb-5" style={{ maxWidth: '600px' }}>
+                Pet Connect es una plataforma que facilita la adopción responsable de mascotas,
+                conectando refugios de animales con personas que buscan dar un hogar amoroso
+                a un nuevo miembro de la familia.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
