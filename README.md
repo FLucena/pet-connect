@@ -1,6 +1,6 @@
 # Pet Connect 🐾
 
-Una aplicación web moderna construida con React, TypeScript y Vite para conectar dueños de mascotas y sus amigos peludos.
+Una aplicación web moderna construida con React, TypeScript y Vite que conecta refugios de animales con potenciales adoptantes, facilitando el proceso de adopción responsable.
 
 ## Características
 
@@ -19,6 +19,16 @@ Una aplicación web moderna construida con React, TypeScript y Vite para conecta
 - **Estilos:** Bootstrap 5
 - **Calidad de Código:** ESLint
 - **Gestor de Paquetes:** npm
+
+## Colaboradores
+
+| Nombre | Email | LinkedIn |
+|:------:|:-----:|:--------:|
+| Francisco Lucena | franciscolucena90@gmail.com | [LinkedIn](https://www.linkedin.com/in/franciscoivanlucena/) |
+| Julio Fidanza | - | - |
+| Lautaro Kamenetzky | lautarokmn@gmail.com | - |
+| Matías Carabajal | Matias.carabajal@estudiantes.unahur.edu.ar | - |
+| Santiago Aguilera | - | - |
 
 ## Comenzando
 
