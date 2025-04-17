@@ -1,0 +1,160 @@
+[
+  {
+    "id": "A001",
+    "informacionPersonal": {
+      "nombre": "María",
+      "apellido": "González",
+      "fechaNacimiento": "1990-05-15",
+      "dni": "35.123.456",
+      "genero": "femenino",
+      "estadoCivil": "soltera"
+    },
+    "contacto": {
+      "email": "maria.gonzalez@email.com",
+      "telefono": "+54 11 2345-6789",
+      "celular": "+54 9 11 2345-6789"
+    },
+    "direccion": {
+      "calle": "Av. Corrientes 1234",
+      "ciudad": "Buenos Aires",
+      "provincia": "Buenos Aires",
+      "codigoPostal": "C1043",
+      "pais": "Argentina"
+    },
+    "situacionHabitacional": {
+      "tipoVivienda": "departamento",
+      "esPropietario": false,
+      "tienePatio": false,
+      "tieneBalcon": true,
+      "tamañoVivienda": "60m²",
+      "permiteMascotas": true
+    },
+    "situacionLaboral": {
+      "empleo": "empleado",
+      "empresa": "Tech Solutions SA",
+      "cargo": "Desarrolladora Frontend",
+      "ingresoMensual": 250000,
+      "estabilidadLaboral": "indefinido"
+    },
+    "experienciaMascotas": {
+      "haTenidoMascotas": true,
+      "mascotasAnteriores": [
+        {
+          "tipo": "perro",
+          "nombre": "Toby",
+          "años": 12,
+          "razon": "fallecimiento"
+        }
+      ],
+      "conocimientoCuidados": true,
+      "disponibilidadVeterinario": true
+    },
+    "preferenciasAdopcion": {
+      "tipoAnimal": ["perro", "gato"],
+      "tamaño": ["pequeño", "mediano"],
+      "edad": ["cachorro", "joven"],
+      "sexo": "indiferente",
+      "caracteristicasEspeciales": ["amigable", "sociable", "bueno con niños"]
+    },
+    "disponibilidad": {
+      "horasSolo": 8,
+      "diasTrabajo": 5,
+      "puedePasear": true,
+      "frecuenciaPaseos": "3 veces al día"
+    },
+    "referencias": [
+      {
+        "nombre": "Juan Pérez",
+        "relacion": "amigo",
+        "telefono": "+54 11 3456-7890"
+      },
+      {
+        "nombre": "Laura Martínez",
+        "relacion": "vecina",
+        "telefono": "+54 11 4567-8901"
+      }
+    ],
+    "estadoSolicitud": "pendiente",
+    "fechaRegistro": "2025-02-15",
+    "ultimaActualizacion": "2025-02-15"
+  },
+  {
+    "id": "A002",
+    "informacionPersonal": {
+      "nombre": "Carlos",
+      "apellido": "Rodríguez",
+      "fechaNacimiento": "1985-08-22",
+      "dni": "30.987.654",
+      "genero": "masculino",
+      "estadoCivil": "casado"
+    },
+    "contacto": {
+      "email": "carlos.rodriguez@email.com",
+      "telefono": "+54 351 234-5678",
+      "celular": "+54 9 351 234-5678"
+    },
+    "direccion": {
+      "calle": "Av. Colón 567",
+      "ciudad": "Córdoba",
+      "provincia": "Córdoba",
+      "codigoPostal": "X5000",
+      "pais": "Argentina"
+    },
+    "situacionHabitacional": {
+      "tipoVivienda": "casa",
+      "esPropietario": true,
+      "tienePatio": true,
+      "tieneBalcon": false,
+      "tamañoVivienda": "120m²",
+      "permiteMascotas": true
+    },
+    "situacionLaboral": {
+      "empleo": "empleado",
+      "empresa": "Consultora IT",
+      "cargo": "Gerente de Proyectos",
+      "ingresoMensual": 350000,
+      "estabilidadLaboral": "indefinido"
+    },
+    "experienciaMascotas": {
+      "haTenidoMascotas": true,
+      "mascotasAnteriores": [
+        {
+          "tipo": "perro",
+          "nombre": "Max",
+          "años": 8,
+          "razon": "mudanza"
+        }
+      ],
+      "conocimientoCuidados": true,
+      "disponibilidadVeterinario": true
+    },
+    "preferenciasAdopcion": {
+      "tipoAnimal": ["perro"],
+      "tamaño": ["mediano", "grande"],
+      "edad": ["adulto"],
+      "sexo": "indiferente",
+      "caracteristicasEspeciales": ["tranquilo", "bueno con otros perros"]
+    },
+    "disponibilidad": {
+      "horasSolo": 6,
+      "diasTrabajo": 5,
+      "puedePasear": true,
+      "frecuenciaPaseos": "2 veces al día"
+    },
+    "referencias": [
+      {
+        "nombre": "Ana López",
+        "relacion": "colega",
+        "telefono": "+54 351 345-6789"
+      },
+      {
+        "nombre": "Pedro Sánchez",
+        "relacion": "vecino",
+        "telefono": "+54 351 456-7890"
+      }
+    ],
+    "estadoSolicitud": "aprobado",
+    "fechaRegistro": "2025-01-20",
+    "ultimaActualizacion": "2025-02-01"
+  }
+] 

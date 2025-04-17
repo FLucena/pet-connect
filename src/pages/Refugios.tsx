@@ -1,26 +1,40 @@
 import React from 'react';
-import refugiosData from '../data/refugios.json';
-import RefugioCard from '../components/RefugioCard';
+import refugiosData from '@/data/shelters.json';
+import RefugioCard from '@/components/RefugioCard';
 
 interface Refugio {
   id: string;
   nombre: string;
   descripcion: string;
   direccion: {
+    calle: string;
     ciudad: string;
     provincia: string;
+    codigoPostal: string;
+    pais: string;
   };
   contacto: {
     telefono: string;
     email: string;
+    web: string;
+    redesSociales: {
+      facebook?: string;
+      instagram?: string;
+      twitter?: string;
+    };
   };
   rating: number;
   reseñas: number;
   fotos: string[];
+  estado: string;
+}
+
+interface RefugiosData {
+  refugios: Refugio[];
 }
 
 const Refugios: React.FC = () => {
-  const refugios: Refugio[] = refugiosData.refugios;
+  const { refugios } = refugiosData as RefugiosData;
 
   const handleCreateRefugio = () => {
     // TODO: Implement create refugio functionality

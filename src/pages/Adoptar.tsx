@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import mascotasData from '../data/mascotas.json';
-import { Mascota, PetFilters as PetFiltersType, PetErrors } from '../types/mascota';
-import { ESTADOS, MASCOTAS_POR_PAGINA } from '../constants/adopcion';
-import { PetCard } from '../components/PetCard';
-import { PetPagination } from '../components/PetPagination';
-import { PetFilters } from '../components/PetFilters';
+import mascotasData from '@/data/pets.json';
+import { Mascota, PetFilters as PetFiltersType, PetErrors } from '@/types/mascota';
+import { ESTADOS, MASCOTAS_POR_PAGINA } from '@/constants/adopcion';
+import { PetCard } from '@/components/PetCard';
+import { PetPagination } from '@/components/PetPagination';
+import { PetFilters } from '@/components/PetFilters';
 
 // Simulated API call
 const fetchMascotas = async (): Promise<Mascota[]> => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 500));
-  return mascotasData.mascotas as Mascota[];
+  return mascotasData as Mascota[];
 };
 
 const Adoptar: React.FC = () => {

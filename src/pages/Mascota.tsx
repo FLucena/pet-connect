@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import mascotasData from '../data/mascotas.json';
-import type { Mascota } from '../types/mascota';
+import mascotasData from '@/data/pets.json'
+import type { Mascota } from '@/types/mascota';
 
 const Mascota: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,14 +19,14 @@ const Mascota: React.FC = () => {
         setError(null);
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 500));
-        const mascotaEncontrada = mascotasData.mascotas.find(m => m.id === id);
+        const mascotaEncontrada = (mascotasData as Mascota[]).find(m => m.id === id);
         
         if (!mascotaEncontrada) {
           setError('Mascota no encontrada');
           return;
         }
         
-        setMascota(mascotaEncontrada as Mascota);
+        setMascota(mascotaEncontrada);
       } catch (err) {
         setError('Error al cargar la información de la mascota');
         console.error('Error loading pet:', err);
@@ -141,7 +141,7 @@ const Mascota: React.FC = () => {
               </div>
               <div className="card-body">
                 <div className="d-flex gap-2 overflow-auto">
-                  {mascota?.fotos.map((foto, index) => (
+                  {mascota?.fotos.map((foto: string, index: number) => (
                     <img
                       key={index}
                       src={foto}
@@ -206,7 +206,7 @@ const Mascota: React.FC = () => {
                     <li>
                       <strong>Marcas Especiales:</strong>
                       <ul>
-                        {mascota.caracteristicasFisicas.marcasEspeciales.map((marca, index) => (
+                        {mascota.caracteristicasFisicas.marcasEspeciales.map((marca: string, index: number) => (
                           <li key={index}>{marca}</li>
                         ))}
                       </ul>
@@ -238,7 +238,7 @@ const Mascota: React.FC = () => {
                     <li>
                       <strong>Condiciones Especiales:</strong>
                       <ul>
-                        {mascota.salud.condicionesEspeciales.map((condicion, index) => (
+                        {mascota.salud.condicionesEspeciales.map((condicion: string, index: number) => (
                           <li key={index}>{condicion}</li>
                         ))}
                       </ul>
@@ -248,7 +248,7 @@ const Mascota: React.FC = () => {
                     <li>
                       <strong>Alergias:</strong>
                       <ul>
-                        {mascota.salud.alergias.map((alergia, index) => (
+                        {mascota.salud.alergias.map((alergia: string, index: number) => (
                           <li key={index}>{alergia}</li>
                         ))}
                       </ul>
@@ -274,7 +274,7 @@ const Mascota: React.FC = () => {
                   <li>
                     <strong>Carácter:</strong>
                     <ul>
-                      {mascota.comportamiento.caracter.map((trait, index) => (
+                      {mascota.comportamiento.caracter.map((trait: string, index: number) => (
                         <li key={index}>{trait}</li>
                       ))}
                     </ul>
@@ -283,7 +283,7 @@ const Mascota: React.FC = () => {
                     <li>
                       <strong>Necesidades Especiales:</strong>
                       <ul>
-                        {mascota.comportamiento.necesidadesEspeciales.map((necesidad, index) => (
+                        {mascota.comportamiento.necesidadesEspeciales.map((necesidad: string, index: number) => (
                           <li key={index}>{necesidad}</li>
                         ))}
                       </ul>
@@ -323,7 +323,7 @@ const Mascota: React.FC = () => {
                     <li>
                       <strong>Necesidades Especiales:</strong>
                       <ul>
-                        {mascota.cuidados.necesidadesEspeciales.map((necesidad, index) => (
+                        {mascota.cuidados.necesidadesEspeciales.map((necesidad: string, index: number) => (
                           <li key={index}>{necesidad}</li>
                         ))}
                       </ul>
