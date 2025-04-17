@@ -38,16 +38,16 @@ const Footer: React.FC = () => {
                 <Link to="/" className="text-light text-decoration-none">Inicio</Link>
               </li>
               <li className="mb-2">
-                <Link to="/pets" className="text-light text-decoration-none">Mascotas</Link>
+                <Link to="/adoptar" className="text-light text-decoration-none">Adoptar</Link>
               </li>
               <li className="mb-2">
-                <Link to="/shelters" className="text-light text-decoration-none">Refugios</Link>
+                <Link to="/refugios" className="text-light text-decoration-none">Refugios</Link>
               </li>
               <li className="mb-2">
-                <Link to="/about" className="text-light text-decoration-none">Acerca de</Link>
+                <Link to="/quienes-somos" className="text-light text-decoration-none">Quiénes Somos</Link>
               </li>
               <li className="mb-2">
-                <Link to="/contact" className="text-light text-decoration-none">Contacto</Link>
+                <Link to="/contacto" className="text-light text-decoration-none">Contacto</Link>
               </li>
             </ul>
           </div>
@@ -57,16 +57,16 @@ const Footer: React.FC = () => {
             <h5 className="mb-3">Recursos</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <Link to="/faq" className="text-light text-decoration-none">FAQ</Link>
+                <Link to="/preguntas-frecuentes" className="text-light text-decoration-none">Preguntas Frecuentes</Link>
               </li>
               <li className="mb-2">
                 <Link to="/blog" className="text-light text-decoration-none">Blog</Link>
               </li>
               <li className="mb-2">
-                <Link to="/terms" className="text-light text-decoration-none">Términos</Link>
+                <Link to="/terminos" className="text-light text-decoration-none">Términos</Link>
               </li>
               <li className="mb-2">
-                <Link to="/privacy" className="text-light text-decoration-none">Privacidad</Link>
+                <Link to="/privacidad" className="text-light text-decoration-none">Privacidad</Link>
               </li>
             </ul>
           </div>

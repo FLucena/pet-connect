@@ -8,8 +8,10 @@ const HomeContent: React.FC = () => {
       <section className="py-5 position-relative">
         <div className="container py-5">
           <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-md-6 d-flex justify-content-center justify-content-md-end mb-5 mb-md-0">
-              <Logo />
+            <div className="col-12 col-md-6 d-flex justify-content-center justify-content-md-end mb-4 mb-md-0">
+              <div className="w-100">
+                <Logo />
+              </div>
             </div>
             <div className="col-12 col-md-6 text-center text-md-left d-flex flex-column align-items-center align-items-md-start">
               <h1 className="display-4 fw-bold mb-5">

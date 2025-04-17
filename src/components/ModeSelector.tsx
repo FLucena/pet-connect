@@ -13,7 +13,7 @@ const ModeSelector: React.FC = () => {
     <div 
       className="position-relative w-100"
       style={{
-        backgroundImage: 'url(../../public/gatito.jpg)',
+        backgroundImage: 'url(/gatito.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: '0% 20%',
         minHeight: '500px'
