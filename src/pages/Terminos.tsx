@@ -51,7 +51,7 @@ const Terminos: React.FC = () => {
 
           <div className="mt-5 pt-3 border-top">
             <p className="text-muted">
-              Última actualización: Marzo 2024
+              Última actualización: Abril 2025
             </p>
           </div>
         </div>

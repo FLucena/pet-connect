@@ -1,26 +1,9 @@
 import React from 'react';
+import postsData from '../data/posts.json';
+import { PostsData } from '../types';
 
 const Blog: React.FC = () => {
-  const posts = [
-    {
-      title: "Consejos para la Adopción Responsable",
-      date: "15 de Marzo, 2024",
-      excerpt: "Descubre los aspectos más importantes a considerar antes de adoptar una mascota y cómo prepararte para esta nueva etapa.",
-      image: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Historias de Éxito: Luna encontró su hogar",
-      date: "10 de Marzo, 2024",
-      excerpt: "Conoce la historia de Luna, una perrita que después de dos años en el refugio, finalmente encontró su familia perfecta.",
-      image: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Cómo Ayudar a tu Mascota a Adaptarse",
-      date: "5 de Marzo, 2024",
-      excerpt: "Tips y consejos para hacer que la transición de tu nueva mascota a su hogar sea lo más suave posible.",
-      image: "https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
+  const { posts } = postsData as PostsData;
 
   return (
     <div className="min-h-screen bg-light p-4">
@@ -28,7 +11,7 @@ const Blog: React.FC = () => {
         <h1 className="text-3xl font-bold mb-6">Blog</h1>
         
         <div className="row g-4">
-          {posts.map((post, index) => (
+          {posts.map((post, index: number) => (
             <div className="col-md-4" key={index}>
               <div className="card h-100 border-0 shadow-sm">
                 <img 

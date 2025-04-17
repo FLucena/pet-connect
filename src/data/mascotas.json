@@ -1,0 +1,918 @@
+{
+  "mascotas": [
+    {
+      "id": "M001",
+      "tipo": "perro",
+      "nombre": "Luna",
+      "raza": "Labrador Retriever",
+      "edad": {
+        "años": 2,
+        "meses": 6
+      },
+      "sexo": "hembra",
+      "tamaño": "mediano",
+      "peso": 25,
+      "color": "negro",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "orejas": "caídas",
+        "cola": "larga",
+        "marcasEspeciales": ["mancha blanca en el pecho"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-15",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2023-12-10",
+        "microchip": true,
+        "numeroMicrochip": "AR123456789",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "alta",
+        "entrenamiento": "básico",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": false,
+        "caracter": ["juguetón", "amigable", "activo"],
+        "necesidadesEspeciales": ["ejercicio diario", "compañía frecuente"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2023-10-05",
+        "circunstanciasRescate": "Encontrada abandonada en la calle",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Responde bien al entrenamiento positivo"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "2-3 paseos diarios",
+        "aseo": "baño mensual",
+        "necesidadesEspeciales": ["cepillado semanal"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2023-10-05",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2023-10-05",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M002",
+      "tipo": "gato",
+      "nombre": "Simba",
+      "raza": "Mestizo",
+      "edad": {
+        "años": 1,
+        "meses": 3
+      },
+      "sexo": "macho",
+      "tamaño": "pequeño",
+      "peso": 3.5,
+      "color": "naranja",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "patron": "atigrado",
+        "marcasEspeciales": ["rayas en la cola"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-02-01",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2025-01-20",
+        "microchip": true,
+        "numeroMicrochip": "AR987654321",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "media",
+        "sociabilidad": "media",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": false,
+        "buenoConGatos": true,
+        "caracter": ["curioso", "independiente", "cariñoso"],
+        "necesidadesEspeciales": ["rascador", "juguetes interactivos"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2025-01-10",
+        "circunstanciasRescate": "Encontrado en un parque",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Se adapta bien a espacios pequeños"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego diario",
+        "aseo": "cepillado semanal",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2025-01-10",
+        "adoptanteActual": "A001",
+        "fechaAdopcion": "2025-02-10",
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "adoptado",
+      "fechaRegistro": "2025-01-10",
+      "ultimaActualizacion": "2025-02-10"
+    },
+    {
+      "id": "M003",
+      "tipo": "perro",
+      "nombre": "Rocky",
+      "raza": "Bulldog Francés",
+      "edad": {
+        "años": 4,
+        "meses": 0
+      },
+      "sexo": "macho",
+      "tamaño": "pequeño",
+      "peso": 12,
+      "color": "beige",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "orejas": "erguidas",
+        "marcasEspeciales": ["máscara negra"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-20",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2022-06-15",
+        "microchip": true,
+        "numeroMicrochip": "AR456789123",
+        "condicionesEspeciales": ["braquicefálico"],
+        "alergias": ["algunos tipos de polen"],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "baja",
+        "sociabilidad": "alta",
+        "entrenamiento": "básico",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["tranquilo", "afectuoso", "dormilón"],
+        "necesidadesEspeciales": ["evitar ejercicio intenso", "control de temperatura"]
+      },
+      "historia": {
+        "origen": "entrega voluntaria",
+        "fechaRescate": "2025-01-25",
+        "circunstanciasRescate": "Entrega por mudanza internacional",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Necesita cuidado especial por su condición braquicefálica"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "paseos cortos",
+        "aseo": "limpieza de pliegues semanal",
+        "necesidadesEspeciales": ["control de temperatura", "ejercicio moderado"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2025-01-25",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [
+          {
+            "id": "A002",
+            "fechaAdopcion": "2022-07-01",
+            "fechaDevolucion": "2025-01-25",
+            "razon": "mudanza internacional"
+          }
+        ],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583512603806-077998240c7a?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583512603805-3cc6b41f3dfb?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2025-01-25",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M004",
+      "tipo": "gato",
+      "nombre": "Milo",
+      "raza": "Siamés",
+      "edad": {
+        "años": 3,
+        "meses": 2
+      },
+      "sexo": "macho",
+      "tamaño": "mediano",
+      "peso": 4.2,
+      "color": "crema",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "patron": "point",
+        "marcasEspeciales": ["puntos oscuros en orejas y cola"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-02-01",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2023-11-15",
+        "microchip": true,
+        "numeroMicrochip": "AR111222333",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "alta",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["vocal", "curioso", "inteligente"],
+        "necesidadesEspeciales": ["atención frecuente", "juguetes interactivos"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2023-11-10",
+        "circunstanciasRescate": "Encontrado en un parque",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Muy vocal y comunicativo"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego diario",
+        "aseo": "cepillado semanal",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2023-11-10",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": "F001",
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "en foster",
+      "fechaRegistro": "2023-11-10",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M005",
+      "tipo": "perro",
+      "nombre": "Bella",
+      "raza": "Golden Retriever",
+      "edad": {
+        "años": 1,
+        "meses": 8
+      },
+      "sexo": "hembra",
+      "tamaño": "grande",
+      "peso": 28,
+      "color": "dorado",
+      "caracteristicasFisicas": {
+        "pelaje": "largo",
+        "orejas": "caídas",
+        "cola": "larga",
+        "marcasEspeciales": ["mancha blanca en el pecho"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-20",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2024-12-15",
+        "microchip": true,
+        "numeroMicrochip": "AR444555666",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "alta",
+        "entrenamiento": "básico",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["amigable", "juguetón", "inteligente"],
+        "necesidadesEspeciales": ["ejercicio diario", "compañía frecuente"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-12-10",
+        "circunstanciasRescate": "Encontrada abandonada en la calle",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Excelente con niños"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "2-3 paseos diarios",
+        "aseo": "baño mensual",
+        "necesidadesEspeciales": ["cepillado semanal"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2024-12-10",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-12-10",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M006",
+      "tipo": "gato",
+      "nombre": "Luna",
+      "raza": "Maine Coon",
+      "edad": {
+        "años": 2,
+        "meses": 0
+      },
+      "sexo": "hembra",
+      "tamaño": "grande",
+      "peso": 5.8,
+      "color": "gris",
+      "caracteristicasFisicas": {
+        "pelaje": "largo",
+        "patron": "atigrado",
+        "marcasEspeciales": ["mechones en orejas"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-01-15",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2024-10-20",
+        "microchip": true,
+        "numeroMicrochip": "AR777888999",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "media",
+        "sociabilidad": "alta",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["gentil", "curioso", "afectuoso"],
+        "necesidadesEspeciales": ["rascador", "cepillado frecuente"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-10-15",
+        "circunstanciasRescate": "Encontrada en un parque",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Muy sociable y amigable"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego diario",
+        "aseo": "cepillado frecuente",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2024-10-15",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-10-15",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M007",
+      "tipo": "perro",
+      "nombre": "Max",
+      "raza": "Chihuahua",
+      "edad": {
+        "años": 5,
+        "meses": 0
+      },
+      "sexo": "macho",
+      "tamaño": "pequeño",
+      "peso": 2.5,
+      "color": "marrón",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "orejas": "erguidas",
+        "cola": "corta",
+        "marcasEspeciales": ["mancha blanca en el pecho"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-10",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2022-06-20",
+        "microchip": true,
+        "numeroMicrochip": "AR123789456",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "media",
+        "entrenamiento": "básico",
+        "buenoConNinos": false,
+        "buenoConPerros": true,
+        "buenoConGatos": false,
+        "caracter": ["valiente", "leal", "protector"],
+        "necesidadesEspeciales": ["socialización", "entrenamiento"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-11-05",
+        "circunstanciasRescate": "Encontrado abandonado",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Necesita socialización"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "paseos cortos",
+        "aseo": "baño mensual",
+        "necesidadesEspeciales": ["abrigo en invierno"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2024-11-05",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1583512603806-077998240c7a?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583512603805-3cc6b41f3dfb?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-11-05",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M008",
+      "tipo": "gato",
+      "nombre": "Oliver",
+      "raza": "Persa",
+      "edad": {
+        "años": 4,
+        "meses": 0
+      },
+      "sexo": "macho",
+      "tamaño": "mediano",
+      "peso": 4.5,
+      "color": "blanco",
+      "caracteristicasFisicas": {
+        "pelaje": "largo",
+        "patron": "sólido",
+        "marcasEspeciales": ["ojos azules"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-01-05",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2022-08-15",
+        "microchip": true,
+        "numeroMicrochip": "AR456123789",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "baja",
+        "sociabilidad": "media",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": false,
+        "buenoConGatos": true,
+        "caracter": ["tranquilo", "elegante", "independiente"],
+        "necesidadesEspeciales": ["cepillado diario"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-09-20",
+        "circunstanciasRescate": "Encontrado en la calle",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Muy tranquilo y elegante"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego moderado",
+        "aseo": "cepillado diario",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2024-09-20",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-09-20",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M009",
+      "tipo": "perro",
+      "nombre": "Daisy",
+      "raza": "Beagle",
+      "edad": {
+        "años": 2,
+        "meses": 6
+      },
+      "sexo": "hembra",
+      "tamaño": "mediano",
+      "peso": 12,
+      "color": "tricolor",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "orejas": "caídas",
+        "cola": "larga",
+        "marcasEspeciales": ["mancha blanca en la cola"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-15",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2023-12-10",
+        "microchip": true,
+        "numeroMicrochip": "AR789456123",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "alta",
+        "entrenamiento": "básico",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["amigable", "curioso", "juguetón"],
+        "necesidadesEspeciales": ["ejercicio diario", "entrenamiento de olfato"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2023-12-05",
+        "circunstanciasRescate": "Encontrada abandonada",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Excelente sentido del olfato"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "2-3 paseos diarios",
+        "aseo": "baño mensual",
+        "necesidadesEspeciales": ["juegos de olfato"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2023-12-05",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2023-12-05",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M010",
+      "tipo": "gato",
+      "nombre": "Lily",
+      "raza": "Ragdoll",
+      "edad": {
+        "años": 1,
+        "meses": 6
+      },
+      "sexo": "hembra",
+      "tamaño": "grande",
+      "peso": 4.8,
+      "color": "bicolor",
+      "caracteristicasFisicas": {
+        "pelaje": "semilargo",
+        "patron": "point",
+        "marcasEspeciales": ["ojos azules", "máscara oscura"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-01-20",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2024-10-15",
+        "microchip": true,
+        "numeroMicrochip": "AR321654987",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "baja",
+        "sociabilidad": "alta",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["tranquila", "afectuosa", "relajada"],
+        "necesidadesEspeciales": ["rascador", "cepillado frecuente"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-10-10",
+        "circunstanciasRescate": "Encontrada en un parque",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Muy tranquila y relajada"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego moderado",
+        "aseo": "cepillado frecuente",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2024-10-10",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-10-10",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M011",
+      "tipo": "perro",
+      "nombre": "Charlie",
+      "raza": "Border Collie",
+      "edad": {
+        "años": 3,
+        "meses": 0
+      },
+      "sexo": "macho",
+      "tamaño": "mediano",
+      "peso": 18,
+      "color": "blanco y negro",
+      "caracteristicasFisicas": {
+        "pelaje": "medio",
+        "orejas": "erguidas",
+        "cola": "mediana",
+        "marcasEspeciales": ["collar blanco"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-25",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2023-11-20",
+        "microchip": true,
+        "numeroMicrochip": "AR654987321",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "muy alta",
+        "sociabilidad": "alta",
+        "entrenamiento": "avanzado",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["inteligente", "activo", "obediente"],
+        "necesidadesEspeciales": ["ejercicio intenso", "estimulación mental"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2023-11-15",
+        "circunstanciasRescate": "Encontrado abandonado",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Excelente para deportes caninos"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "ejercicio intenso diario",
+        "aseo": "baño mensual",
+        "necesidadesEspeciales": ["entrenamiento", "juegos de inteligencia"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2023-11-15",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2023-11-15",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M012",
+      "tipo": "gato",
+      "nombre": "Leo",
+      "raza": "Bengalí",
+      "edad": {
+        "años": 2,
+        "meses": 3
+      },
+      "sexo": "macho",
+      "tamaño": "mediano",
+      "peso": 4.2,
+      "color": "atigrado",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "patron": "atigrado",
+        "marcasEspeciales": ["manchas de leopardo"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["trivalente", "antirrábica"],
+        "ultimaVacuna": "2025-01-30",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2024-09-25",
+        "microchip": true,
+        "numeroMicrochip": "AR987321654",
+        "condicionesEspeciales": [],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "alta",
+        "sociabilidad": "media",
+        "entrenamiento": "litter trained",
+        "buenoConNinos": true,
+        "buenoConPerros": false,
+        "buenoConGatos": true,
+        "caracter": ["activo", "curioso", "juguetón"],
+        "necesidadesEspeciales": ["juguetes interactivos", "espacio para trepar"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-09-25",
+        "circunstanciasRescate": "Encontrado en la calle",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Muy activo y juguetón"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "juego diario",
+        "aseo": "cepillado semanal",
+        "necesidadesEspeciales": ["rascador", "caja de arena"]
+      },
+      "relaciones": {
+        "refugioActual": "R002",
+        "fechaIngresoRefugio": "2024-09-25",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-09-25",
+      "ultimaActualizacion": "2025-02-15"
+    },
+    {
+      "id": "M013",
+      "tipo": "perro",
+      "nombre": "Lola",
+      "raza": "Pug",
+      "edad": {
+        "años": 4,
+        "meses": 0
+      },
+      "sexo": "hembra",
+      "tamaño": "pequeño",
+      "peso": 7.5,
+      "color": "beige",
+      "caracteristicasFisicas": {
+        "pelaje": "corto",
+        "orejas": "caídas",
+        "cola": "enroscada",
+        "marcasEspeciales": ["máscara negra"]
+      },
+      "salud": {
+        "estado": "saludable",
+        "vacunas": ["antirrábica", "moquillo", "parvovirus"],
+        "ultimaVacuna": "2025-01-05",
+        "esterilizado": true,
+        "fechaEsterilizacion": "2022-12-20",
+        "microchip": true,
+        "numeroMicrochip": "AR147258369",
+        "condicionesEspeciales": ["braquicefálico"],
+        "alergias": [],
+        "medicamentos": []
+      },
+      "comportamiento": {
+        "energia": "media",
+        "sociabilidad": "alta",
+        "entrenamiento": "básico",
+        "buenoConNinos": true,
+        "buenoConPerros": true,
+        "buenoConGatos": true,
+        "caracter": ["amigable", "tranquilo", "cariñoso"],
+        "necesidadesEspeciales": ["control de temperatura", "ejercicio moderado"]
+      },
+      "historia": {
+        "origen": "rescate",
+        "fechaRescate": "2024-08-15",
+        "circunstanciasRescate": "Encontrada abandonada",
+        "historiaMedica": "Ninguna",
+        "notasEspeciales": "Necesita cuidado especial por su condición braquicefálica"
+      },
+      "cuidados": {
+        "alimentacion": "2 veces al día",
+        "ejercicio": "paseos cortos",
+        "aseo": "limpieza de pliegues semanal",
+        "necesidadesEspeciales": ["control de temperatura"]
+      },
+      "relaciones": {
+        "refugioActual": "R001",
+        "fechaIngresoRefugio": "2024-08-15",
+        "adoptanteActual": null,
+        "adoptantesAnteriores": [],
+        "fosterActual": null,
+        "fostersAnteriores": []
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583512603806-077998240c7a?w=800&auto=format&fit=crop&q=60"
+      ],
+      "estado": "disponible",
+      "fechaRegistro": "2024-08-15",
+      "ultimaActualizacion": "2025-02-15"
+    }
+  ]
+} 

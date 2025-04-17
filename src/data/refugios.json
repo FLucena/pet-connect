@@ -1,0 +1,464 @@
+{
+  "refugios": [
+    {
+      "id": "R001",
+      "nombre": "Refugio Patitas Felices",
+      "descripcion": "Refugio dedicado al rescate y cuidado de animales abandonados, con más de 10 años de experiencia.",
+      "direccion": {
+        "calle": "Av. Libertador 1234",
+        "ciudad": "Buenos Aires",
+        "provincia": "Buenos Aires",
+        "codigoPostal": "C1425",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 11 1234-5678",
+        "email": "info@patitasfelices.org",
+        "web": "www.patitasfelices.org",
+        "redesSociales": {
+          "facebook": "patitasfelices",
+          "instagram": "@patitasfelices",
+          "twitter": "@patitasfelices"
+        }
+      },
+      "horarios": {
+        "lunes": "10:00 - 18:00",
+        "martes": "10:00 - 18:00",
+        "miercoles": "10:00 - 18:00",
+        "jueves": "10:00 - 18:00",
+        "viernes": "10:00 - 18:00",
+        "sabado": "10:00 - 14:00",
+        "domingo": "Cerrado"
+      },
+      "capacidad": {
+        "maxima": 50,
+        "actual": 35
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Cuidado temporal"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 21 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 1200,
+        "animalesRescatados": 2500,
+        "animalesEsterilizados": 3000
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1601979031925-42453c73fcd6?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.8,
+      "reseñas": 156,
+      "fechaRegistro": "2015-03-15",
+      "estado": "activo"
+    },
+    {
+      "id": "R002",
+      "nombre": "Hogar de Mascotas",
+      "descripcion": "Centro de rescate especializado en perros y gatos, con programas de rehabilitación y socialización.",
+      "direccion": {
+        "calle": "Calle San Martín 567",
+        "ciudad": "Córdoba",
+        "provincia": "Córdoba",
+        "codigoPostal": "X5000",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 351 987-6543",
+        "email": "contacto@hogardemascotas.com",
+        "web": "www.hogardemascotas.com",
+        "redesSociales": {
+          "facebook": "hogardemascotas",
+          "instagram": "@hogardemascotas",
+          "twitter": "@hogardemascotas"
+        }
+      },
+      "horarios": {
+        "lunes": "09:00 - 17:00",
+        "martes": "09:00 - 17:00",
+        "miercoles": "09:00 - 17:00",
+        "jueves": "09:00 - 17:00",
+        "viernes": "09:00 - 17:00",
+        "sabado": "10:00 - 13:00",
+        "domingo": "Cerrado"
+      },
+      "capacidad": {
+        "maxima": 40,
+        "actual": 28
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Cuidado temporal",
+        "Rehabilitación"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 850,
+        "animalesRescatados": 1500,
+        "animalesEsterilizados": 2000
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1601979031925-42453c73fcd6?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.6,
+      "reseñas": 98,
+      "fechaRegistro": "2018-07-22",
+      "estado": "activo"
+    },
+    {
+      "id": "R003",
+      "nombre": "Amigos Peludos",
+      "descripcion": "Refugio especializado en perros de todas las edades, con énfasis en rehabilitación de animales maltratados.",
+      "direccion": {
+        "calle": "Av. Corrientes 2345",
+        "ciudad": "Rosario",
+        "provincia": "Santa Fe",
+        "codigoPostal": "S2000",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 341 234-5678",
+        "email": "info@amigospeludos.org",
+        "web": "www.amigospeludos.org",
+        "redesSociales": {
+          "facebook": "amigospeludos",
+          "instagram": "@amigospeludos",
+          "twitter": "@amigospeludos"
+        }
+      },
+      "horarios": {
+        "lunes": "09:00 - 19:00",
+        "martes": "09:00 - 19:00",
+        "miercoles": "09:00 - 19:00",
+        "jueves": "09:00 - 19:00",
+        "viernes": "09:00 - 19:00",
+        "sabado": "10:00 - 16:00",
+        "domingo": "10:00 - 14:00"
+      },
+      "capacidad": {
+        "maxima": 60,
+        "actual": 45
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Rehabilitación",
+        "Entrenamiento básico"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 950,
+        "animalesRescatados": 1800,
+        "animalesEsterilizados": 2200
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.7,
+      "reseñas": 120,
+      "fechaRegistro": "2017-05-10",
+      "estado": "activo"
+    },
+    {
+      "id": "R004",
+      "nombre": "Gatitos Felices",
+      "descripcion": "Refugio especializado en gatos, con programas de socialización y cuidado especial para felinos.",
+      "direccion": {
+        "calle": "Calle Sarmiento 789",
+        "ciudad": "Mendoza",
+        "provincia": "Mendoza",
+        "codigoPostal": "M5500",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 261 345-6789",
+        "email": "info@gatitosfelices.org",
+        "web": "www.gatitosfelices.org",
+        "redesSociales": {
+          "facebook": "gatitosfelices",
+          "instagram": "@gatitosfelices",
+          "twitter": "@gatitosfelices"
+        }
+      },
+      "horarios": {
+        "lunes": "10:00 - 18:00",
+        "martes": "10:00 - 18:00",
+        "miercoles": "10:00 - 18:00",
+        "jueves": "10:00 - 18:00",
+        "viernes": "10:00 - 18:00",
+        "sabado": "10:00 - 14:00",
+        "domingo": "Cerrado"
+      },
+      "capacidad": {
+        "maxima": 40,
+        "actual": 32
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Cuidado especial para gatos",
+        "Socialización"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 21 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Compromiso de esterilización"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 700,
+        "animalesRescatados": 1200,
+        "animalesEsterilizados": 1500
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.9,
+      "reseñas": 85,
+      "fechaRegistro": "2019-02-20",
+      "estado": "activo"
+    },
+    {
+      "id": "R005",
+      "nombre": "Refugio del Sur",
+      "descripcion": "Centro de rescate y rehabilitación para animales de todas las especies, con énfasis en educación comunitaria.",
+      "direccion": {
+        "calle": "Av. San Martín 123",
+        "ciudad": "Bahía Blanca",
+        "provincia": "Buenos Aires",
+        "codigoPostal": "B8000",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 291 456-7890",
+        "email": "info@refugiodelsur.org",
+        "web": "www.refugiodelsur.org",
+        "redesSociales": {
+          "facebook": "refugiodelsur",
+          "instagram": "@refugiodelsur",
+          "twitter": "@refugiodelsur"
+        }
+      },
+      "horarios": {
+        "lunes": "08:00 - 20:00",
+        "martes": "08:00 - 20:00",
+        "miercoles": "08:00 - 20:00",
+        "jueves": "08:00 - 20:00",
+        "viernes": "08:00 - 20:00",
+        "sabado": "09:00 - 18:00",
+        "domingo": "09:00 - 14:00"
+      },
+      "capacidad": {
+        "maxima": 100,
+        "actual": 75
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Rehabilitación",
+        "Educación comunitaria",
+        "Voluntariado"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de tenencia responsable"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 1500,
+        "animalesRescatados": 3000,
+        "animalesEsterilizados": 3500
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.8,
+      "reseñas": 200,
+      "fechaRegistro": "2016-08-15",
+      "estado": "activo"
+    },
+    {
+      "id": "R006",
+      "nombre": "Huellas de Amor",
+      "descripcion": "Refugio especializado en perros de razas grandes y especiales, con programas de entrenamiento avanzado.",
+      "direccion": {
+        "calle": "Calle Belgrano 456",
+        "ciudad": "Tucumán",
+        "provincia": "Tucumán",
+        "codigoPostal": "T4000",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 381 567-8901",
+        "email": "info@huellasdeamor.org",
+        "web": "www.huellasdeamor.org",
+        "redesSociales": {
+          "facebook": "huellasdeamor",
+          "instagram": "@huellasdeamor",
+          "twitter": "@huellasdeamor"
+        }
+      },
+      "horarios": {
+        "lunes": "09:00 - 18:00",
+        "martes": "09:00 - 18:00",
+        "miercoles": "09:00 - 18:00",
+        "jueves": "09:00 - 18:00",
+        "viernes": "09:00 - 18:00",
+        "sabado": "10:00 - 15:00",
+        "domingo": "Cerrado"
+      },
+      "capacidad": {
+        "maxima": 45,
+        "actual": 38
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Entrenamiento avanzado",
+        "Rehabilitación",
+        "Terapia asistida"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 25 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de manejo de razas grandes"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 600,
+        "animalesRescatados": 1000,
+        "animalesEsterilizados": 1200
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.7,
+      "reseñas": 95,
+      "fechaRegistro": "2018-11-30",
+      "estado": "activo"
+    },
+    {
+      "id": "R007",
+      "nombre": "Refugio del Norte",
+      "descripcion": "Centro integral de rescate y cuidado animal, con programas de voluntariado y educación ambiental.",
+      "direccion": {
+        "calle": "Av. 9 de Julio 789",
+        "ciudad": "Salta",
+        "provincia": "Salta",
+        "codigoPostal": "A4400",
+        "pais": "Argentina"
+      },
+      "contacto": {
+        "telefono": "+54 387 678-9012",
+        "email": "info@refugiodelnorte.org",
+        "web": "www.refugiodelnorte.org",
+        "redesSociales": {
+          "facebook": "refugiodelnorte",
+          "instagram": "@refugiodelnorte",
+          "twitter": "@refugiodelnorte"
+        }
+      },
+      "horarios": {
+        "lunes": "08:00 - 19:00",
+        "martes": "08:00 - 19:00",
+        "miercoles": "08:00 - 19:00",
+        "jueves": "08:00 - 19:00",
+        "viernes": "08:00 - 19:00",
+        "sabado": "09:00 - 17:00",
+        "domingo": "09:00 - 13:00"
+      },
+      "capacidad": {
+        "maxima": 80,
+        "actual": 65
+      },
+      "servicios": [
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
+        "Microchip",
+        "Rehabilitación",
+        "Educación ambiental",
+        "Voluntariado",
+        "Cuidado de especies silvestres"
+      ],
+      "requisitosAdopcion": [
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de tenencia responsable"
+      ],
+      "estadisticas": {
+        "adopcionesExitosas": 1100,
+        "animalesRescatados": 2200,
+        "animalesEsterilizados": 2800
+      },
+      "fotos": [
+        "https://images.unsplash.com/photo-1583337130417-3346a848be84?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583337130417-3346a848be84?w=800&auto=format&fit=crop&q=60",
+        "https://images.unsplash.com/photo-1583337130417-3346a848be84?w=800&auto=format&fit=crop&q=60"
+      ],
+      "rating": 4.9,
+      "reseñas": 150,
+      "fechaRegistro": "2017-04-05",
+      "estado": "activo"
+    }
+  ]
+} 

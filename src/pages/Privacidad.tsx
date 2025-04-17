@@ -60,7 +60,7 @@ const Privacidad: React.FC = () => {
               Para cualquier consulta sobre privacidad, contáctanos en: privacy@petconnect.com
             </p>
             <p className="text-muted mt-2">
-              Última actualización: Marzo 2024
+              Última actualización: Abril 2025
             </p>
           </div>
         </div>
