@@ -2,57 +2,81 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleToggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
+  const navLinkStyle = {
+    color: "#1E354B", 
+    fontSize: "18px",
+    transition: "all 0.3s ease"
+  }; // Estilo para el enlace de navegación
+  
+  const navLinkHoverStyle = {
+    color: "#4A90E2", 
+    textDecoration: "none",
+    transform: "translateY(-1px)"
+  }; // Estilo para el enlace de navegación al pasar el ratón por encima
   return (
-    <header className="bg-white shadow-sm">
-      <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <header className="bg-white shadow-sm py-2">
+      <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <Link className="navbar-brand d-flex align-items-center" to="/">
-            <span className="h2 mb-0 text-primary">Pet Connect</span>
-          </Link>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={handleToggleMenu}
-            aria-controls="navbarNav"
-            aria-expanded={isMenuOpen ? 'true' : 'false'}
+          <div className="navbar-brand">
+            <span className="h2 mb-0" style={{color:"#1E354B"}}>Pet Connect</span>
+          </div>
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav" 
+            aria-expanded="false" 
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-
-          <div className={`collapse navbar-collapse${isMenuOpen ? ' show' : ''}`} id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse" id="navbarNav" style={{fontFamily:"sans-serif"}}>
+            <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/">
-                  Inicio
-                </NavLink>
+                <a 
+                  href="#" 
+                  className="nav-link" 
+                  style={navLinkStyle} 
+                  onMouseOver={(e) => { 
+                    Object.assign(e.currentTarget.style,
+                    navLinkHoverStyle);
+                  }}
+                  onMouseOut={(e) =>{
+                    e.currentTarget.style.color = navLinkStyle.color;
+                    e.currentTarget.style.textDecoration = "none";
+                    e.currentTarget.style.transform = "none";
+                  }}>Inicio</a>
               </li>
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/pets">
-                  Mascotas
-                </NavLink>
+                <a 
+                  href="#" 
+                  className="nav-link" 
+                  style={navLinkStyle} 
+                  onMouseOver={(e) => {
+                    Object.assign(e.currentTarget.style,
+                    navLinkHoverStyle);
+                  }}
+                  onMouseOut={(e) =>{
+                    e.currentTarget.style.color = navLinkStyle.color;
+                    e.currentTarget.style.textDecoration = "none";
+                    e.currentTarget.style.transform = "none";
+                  }}>Sobre Nosotros</a>
               </li>
               <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/shelters">
-                  Refugios
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/about">
-                  Acerca de
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/contact">
-                  Contacto
-                </NavLink>
+                <a 
+                  href="#" 
+                  className="nav-link" 
+                  style={navLinkStyle} 
+                  onMouseOver={(e) => {
+                    Object.assign(e.currentTarget.style,
+                    navLinkHoverStyle);
+                  }}
+                  onMouseOut={(e) =>{
+                    e.currentTarget.style.color = navLinkStyle.color;
+                    e.currentTarget.style.textDecoration = "none";
+                    e.currentTarget.style.transform = "none";
+                  }}>Contacto</a>
               </li>
             </ul>
 
