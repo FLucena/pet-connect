@@ -13,6 +13,8 @@ import Blog from './pages/Blog';
 import Terminos from './pages/Terminos';
 import Privacidad from './pages/Privacidad';
 import Mascota from './pages/Mascota';
+import UserLocation from './pages/UserLocation';
+import ShelterDetail from './pages/ShelterDetail';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/refugios" element={<Refugios />} />
+          <Route path="/refugios/:id" element={<ShelterDetail />} />
           <Route path="/adoptar" element={<Adoptar />} />
           <Route path="/mascota/:id" element={<Mascota />} />
           <Route path="/contacto" element={<Contacto />} />
@@ -30,6 +33,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/terminos" element={<Terminos />} />
           <Route path="/privacidad" element={<Privacidad />} />
+          <Route path="/ubicacion" element={<UserLocation />} />
         </Routes>
       </main>
       <Footer />

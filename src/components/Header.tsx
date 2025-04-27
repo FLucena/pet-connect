@@ -119,6 +119,22 @@ const Header: React.FC = () => {
                     Adoptar
                   </Link>
                 </li>
+                {/* <li className="nav-item">
+                  <Link 
+                    to="/ubicacion" 
+                    className={`nav-link px-3 ${isActive('/ubicacion')}`}
+                    style={navLinkStyle}
+                    onMouseOver={(e) => {
+                      Object.assign(e.currentTarget.style, navLinkHoverStyle);
+                    }}
+                    onMouseOut={(e) => {
+                      Object.assign(e.currentTarget.style, navLinkStyle);
+                    }}
+                  >
+                    <i className="bi bi-geo-alt me-1"></i>
+                    Ubicación
+                  </Link>
+                </li> */}
                 <li className="nav-item">
                   <Link 
                     to="/quienes-somos" 

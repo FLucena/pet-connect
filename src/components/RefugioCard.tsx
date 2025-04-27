@@ -42,7 +42,7 @@ const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
 
   return (
     <Link
-      to={`/refugio/${refugio.id}`}
+      to={`/refugios/${refugio.id}`}
       className="card h-100 text-decoration-none text-dark hover-shadow"
       style={{ transition: 'all 0.3s ease' }}
     >
