@@ -94,7 +94,7 @@ const UserLocation = () => {
           <h4 className="alert-heading">Error de configuración</h4>
           <p>
             No se ha proporcionado una clave API de Google Maps. Asegúrate de agregar la variable
-            VITE_GOOGLE_MAPS_API_KEY en tu archivo .env
+            GOOGLE_MAPS_API_KEY en tu archivo .env
           </p>
         </div>
       </div>
