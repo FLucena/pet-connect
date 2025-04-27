@@ -1,0 +1,42 @@
+label {
+    position: relative;
+    top: -40px;
+    left: -5px;
+    background: transparent;
+    padding: 0 5px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    pointer-events: none; /* Evita que el label interfiera con el clic */
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label{
+  transform: translateY(-25px);
+  color: #007bff;
+}
+textarea:focus + label,
+textarea:not(:placeholder-shown) + label {
+    transform: translateY(-85px);
+    color: #007bff;
+}
+
+.input-border-bottom {
+    border: none; 
+    border-bottom: 2px solid #ccc;
+    border-radius: 0; 
+    outline: none;
+    box-shadow: none;
+    padding: 8px 0; 
+    line-height: 1.5;
+}
+
+.input-border-bottom:focus {
+    border-bottom: 2px solid #007bff; 
+    box-shadow: none;
+}
+
+textarea.input-border-bottom {
+  resize: none; /* Evita que el usuario cambie el tamaño del textarea */
+  padding: 12px 0; /* Ajusta el padding para que el texto no quede pegado arriba */
+  line-height: 1.5; /* Ajusta el espaciado del texto */
+  min-height: calc(1.5em * 4 + 16px); /* Calcula el tamaño mínimo basado en las filas */
+}
