@@ -26,3 +26,5 @@ dist-ssr
 *.sw?
 
 src/scripts/
+# Local Netlify folder
+.netlify

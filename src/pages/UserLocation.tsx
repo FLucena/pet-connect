@@ -20,7 +20,7 @@ const UserLocation = () => {
   const [locationRequested, setLocationRequested] = useState(false);
 
   // Get the API key from environment variables
-  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY || '';
 
   // Load shelters with coordinates on component mount
   useEffect(() => {
