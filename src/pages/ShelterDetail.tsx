@@ -12,7 +12,7 @@ const ShelterDetail = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'ubicacion' | 'contacto'>('info');
   
   // Get API key from environment variables
-  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY || '';
 
   // Load shelter data
   useEffect(() => {

@@ -19,4 +19,8 @@ export default defineConfig({
       },
     },
   },
+  define: {
+    // Replace 'import.meta.env.GOOGLE_MAPS_API_KEY' with actual value at build time
+    'import.meta.env.GOOGLE_MAPS_API_KEY': JSON.stringify(process.env.GOOGLE_MAPS_API_KEY)
+  }
 })
