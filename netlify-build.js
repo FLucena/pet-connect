@@ -1,5 +1,7 @@
 // netlify-build.js
 // This script verifies if required environment variables are present before build
+import dotenv from 'dotenv';
+dotenv.config();
 
 console.log('Checking required environment variables...');
 
