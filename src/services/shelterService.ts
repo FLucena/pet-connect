@@ -65,13 +65,13 @@ export const getShelterById = (id: string): Shelter | undefined => {
   return getShelters().find(shelter => shelter.id === id);
 };
 
-export const getSheltersWithCoordinates = async (apiKey: string): Promise<Shelter[]> => {
+export const getSheltersWithCoordinates = async (): Promise<Shelter[]> => {
   const shelters = getShelters();
   const sheltersWithCoordinates: Shelter[] = [];
   
   for (const shelter of shelters) {
     const addressStr = `${shelter.direccion.calle}, ${shelter.direccion.ciudad}, ${shelter.direccion.provincia}, ${shelter.direccion.pais}`;
-    const coordinates = await getCoordinatesFromAddress(addressStr, apiKey);
+    const coordinates = await getCoordinatesFromAddress(addressStr);
     
     if (coordinates) {
       sheltersWithCoordinates.push({

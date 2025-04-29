@@ -39,7 +39,7 @@ const ShelterDetail = () => {
         
         // Then get shelters with coordinates if we have an API key
         if (apiKey) {
-          const sheltersWithCoordinates = await getSheltersWithCoordinates(apiKey);
+          const sheltersWithCoordinates = await getSheltersWithCoordinates();
           const fullShelter = sheltersWithCoordinates.find(s => s.id === id);
           if (fullShelter) {
             setShelter(fullShelter);

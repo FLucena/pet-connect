@@ -3,7 +3,6 @@ import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-map
 
 // Define types
 type UserLocationMapProps = {
-  apiKey: string;
   height?: string;
   width?: string;
   onLocationChange?: (location: { lat: number; lng: number }) => void;
@@ -18,7 +17,6 @@ type MapStyles = {
 const libraries: ("places" | "drawing" | "geometry" | "visualization")[] = ["places"];
 
 const UserLocationMap = ({ 
-  apiKey, 
   height = '400px', 
   width = '100%', 
   onLocationChange 
@@ -48,7 +46,7 @@ const UserLocationMap = ({
 
   // Load Google Maps API
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: apiKey,
+    googleMapsApiKey: '', // We'll handle this through our secure endpoint
     libraries,
   });
 
@@ -177,7 +175,7 @@ const UserLocationMap = ({
       </GoogleMap>
 
       {/* Location controls */}
-      <div className="position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+      <div className="position-absolute top-0 start-0 m-2">
         {!locationRequested && (
           <button
             className="btn btn-primary"
