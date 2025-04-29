@@ -12,8 +12,8 @@ const ShelterDetail = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'ubicacion' | 'contacto'>('info');
   
   // Get API key from environment variables
-  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY || '';
-
+  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY;
+ 
   // Load shelter data
   useEffect(() => {
     const loadShelter = async () => {
@@ -37,7 +37,7 @@ const ShelterDetail = () => {
         // Set basic shelter data first
         setShelter(basicShelter);
         
-        // Then get shelters with coordinates
+        // Then get shelters with coordinates if we have an API key
         if (apiKey) {
           const sheltersWithCoordinates = await getSheltersWithCoordinates(apiKey);
           const fullShelter = sheltersWithCoordinates.find(s => s.id === id);
@@ -56,9 +56,9 @@ const ShelterDetail = () => {
     loadShelter();
   }, [id, apiKey]);
 
-  // Load Google Maps
+  // Load Google Maps only if we have an API key
   const { isLoaded: isMapLoaded } = useJsApiLoader({
-    googleMapsApiKey: apiKey,
+    googleMapsApiKey: apiKey || '',
     libraries: ["places"],
   });
 
