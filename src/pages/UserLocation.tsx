@@ -19,17 +19,12 @@ const UserLocation = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [locationRequested, setLocationRequested] = useState(false);
 
-  // Get the API key from environment variables
-  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY || '';
-
   // Load shelters with coordinates on component mount
   useEffect(() => {
     const loadShelters = async () => {
-      if (!apiKey) return;
-      
       setIsLoading(true);
       try {
-        const sheltersWithCoordinates = await getSheltersWithCoordinates(apiKey);
+        const sheltersWithCoordinates = await getSheltersWithCoordinates();
         setShelters(sheltersWithCoordinates);
       } catch (err) {
         console.error('Error loading shelters:', err);
@@ -40,7 +35,7 @@ const UserLocation = () => {
     };
 
     loadShelters();
-  }, [apiKey]);
+  }, []);
 
   // Update nearby shelters when location changes
   useEffect(() => {
@@ -60,9 +55,9 @@ const UserLocation = () => {
     });
 
     try {
-      // Use Reverse Geocoding to get the address from coordinates
+      // Use our secure Netlify Function for reverse geocoding
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${newLocation.lat},${newLocation.lng}&key=${apiKey}`
+        `/.netlify/functions/geocode?latlng=${newLocation.lat},${newLocation.lng}`
       );
       
       if (!response.ok) {
@@ -87,15 +82,51 @@ const UserLocation = () => {
     }
   };
 
-  if (!apiKey) {
+  if (!location) {
     return (
       <div className="container py-5">
-        <div className="alert alert-danger">
-          <h4 className="alert-heading">Error de configuración</h4>
-          <p>
-            No se ha proporcionado una clave API de Google Maps. Asegúrate de agregar la variable
-            GOOGLE_MAPS_API_KEY en tu archivo .env
-          </p>
+        <div className="row">
+          <div className="col-12">
+            <h1 className="mb-4">Encuentra refugios cercanos</h1>
+            <p className="lead mb-4">
+              Necesitamos acceder a tu ubicación para poder mostrarte los refugios más cercanos.
+              Puedes permitir el acceso a tu ubicación o seleccionar manualmente un punto en el mapa.
+            </p>
+          </div>
+        </div>
+
+        <div className="row mb-5">
+          <div className="col-md-8">
+            <div className="card shadow-sm">
+              <div className="card-body p-0">
+                <UserLocationMap
+                  height="500px"
+                  onLocationChange={handleLocationChange}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="card shadow-sm h-100">
+              <div className="card-header bg-primary text-white">
+                <h5 className="card-title mb-0">Detalles de ubicación</h5>
+              </div>
+              <div className="card-body">
+                {error && (
+                  <div className="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                )}
+                
+                {!location && !error && (
+                  <div className="alert alert-info" role="alert">
+                    <i className="bi bi-info-circle me-2"></i>
+                    Permite el acceso a tu ubicación o selecciona un punto en el mapa
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -118,7 +149,6 @@ const UserLocation = () => {
           <div className="card shadow-sm">
             <div className="card-body p-0">
               <UserLocationMap
-                apiKey={apiKey}
                 height="500px"
                 onLocationChange={handleLocationChange}
               />

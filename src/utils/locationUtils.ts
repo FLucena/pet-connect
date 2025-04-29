@@ -36,19 +36,16 @@ const deg2rad = (deg: number): number => {
 };
 
 /**
- * Get coordinates from a shelter address using the Google Maps Geocoding API
+ * Get coordinates from a shelter address using our secure Netlify Function
  * @param address Full address string
- * @param apiKey Google Maps API key
  * @returns Promise that resolves to coordinates { lat, lng } or null if not found
  */
 export const getCoordinatesFromAddress = async (
-  address: string,
-  apiKey: string
+  address: string
 ): Promise<{ lat: number; lng: number } | null> => {
   try {
-    const formattedAddress = encodeURIComponent(address);
     const response = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${formattedAddress}&key=${apiKey}`
+      `/.netlify/functions/geocode?address=${encodeURIComponent(address)}`
     );
     
     if (!response.ok) {

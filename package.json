@@ -12,6 +12,7 @@
     "upload-data": "tsx src/scripts/uploadJsonToDb.ts"
   },
   "dependencies": {
+    "@netlify/functions": "^3.1.2",
     "@react-google-maps/api": "^2.20.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
