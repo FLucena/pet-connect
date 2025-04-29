@@ -11,9 +11,6 @@ const ShelterDetail = () => {
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'info' | 'ubicacion' | 'contacto'>('info');
   
-  // Get API key from environment variables
-  const apiKey = import.meta.env.GOOGLE_MAPS_API_KEY;
- 
   // Load shelter data
   useEffect(() => {
     const loadShelter = async () => {
@@ -37,13 +34,11 @@ const ShelterDetail = () => {
         // Set basic shelter data first
         setShelter(basicShelter);
         
-        // Then get shelters with coordinates if we have an API key
-        if (apiKey) {
-          const sheltersWithCoordinates = await getSheltersWithCoordinates();
-          const fullShelter = sheltersWithCoordinates.find(s => s.id === id);
-          if (fullShelter) {
-            setShelter(fullShelter);
-          }
+        // Then get shelters with coordinates
+        const sheltersWithCoordinates = await getSheltersWithCoordinates();
+        const fullShelter = sheltersWithCoordinates.find(s => s.id === id);
+        if (fullShelter) {
+          setShelter(fullShelter);
         }
       } catch (err) {
         console.error('Error loading shelter:', err);
@@ -54,11 +49,11 @@ const ShelterDetail = () => {
     };
 
     loadShelter();
-  }, [id, apiKey]);
+  }, [id]);
 
-  // Load Google Maps only if we have an API key
+  // Load Google Maps
   const { isLoaded: isMapLoaded } = useJsApiLoader({
-    googleMapsApiKey: apiKey || '',
+    googleMapsApiKey: '', // We'll handle this through our secure endpoint
     libraries: ["places"],
   });
 
@@ -403,12 +398,7 @@ const ShelterDetail = () => {
                     </GoogleMap>
                   ) : (
                     <div className="bg-light d-flex justify-content-center align-items-center h-100">
-                      {!apiKey ? (
-                        <div className="text-center">
-                          <i className="bi bi-exclamation-triangle text-warning" style={{ fontSize: '2rem' }}></i>
-                          <p className="mt-2">API key de Google Maps no configurada</p>
-                        </div>
-                      ) : !shelter.coordinates ? (
+                      {!shelter.coordinates ? (
                         <div className="text-center">
                           <i className="bi bi-geo-alt text-muted" style={{ fontSize: '2rem' }}></i>
                           <p className="mt-2">Coordenadas no disponibles</p>
