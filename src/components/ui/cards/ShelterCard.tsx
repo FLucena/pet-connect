@@ -1,36 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-interface Shelter {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  direccion: {
-    ciudad: string;
-    provincia: string;
-  };
-  contacto: {
-    telefono: string;
-    email: string;
-  };
-  rating: number; 
-  reseñas: number;
-  fotos: string[];
-}
+import { Shelter } from '@/types/shelter';
 
 interface ShelterCardProps {
   shelter: Shelter;
 }
 
 const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
-  const renderStars = (rating: number) => {
+  const renderStars = (rating: number | undefined) => {
     const stars = [];
+    const ratingValue = rating || 0;
     for (let i = 1; i <= 5; i++) {
       stars.push(
         <span
           key={i}
           className={`fs-5 ${
-            i <= Math.floor(rating) ? 'text-warning' : 'text-secondary'
+            i <= Math.floor(ratingValue) ? 'text-warning' : 'text-secondary'
           }`}
         >
           ★
@@ -47,10 +32,10 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
       style={{ transition: 'all 0.3s ease' }}
     >
       <div className="position-relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-        {shelter.fotos && shelter.fotos.length > 0 ? (
+        {shelter.photos?.[0] ? (
           <img
-            src={shelter.fotos[0]}
-            alt={shelter.nombre}
+            src={shelter.photos[0]}
+            alt={shelter.name}
             className="card-img-top h-100 object-fit-cover transition-transform duration-300 hover-scale"
             style={{ 
               willChange: 'transform',
@@ -63,18 +48,22 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
             No hay imagen disponible
           </div>
         )}
-        <div className="position-absolute top-0 end-0 m-2 bg-white rounded-pill px-2 py-1 small fw-semibold shadow-sm">
-          {shelter.direccion.ciudad}
-        </div>
+        {shelter.address?.city && (
+          <div className="position-absolute top-0 end-0 m-2 bg-white rounded-pill px-2 py-1 small fw-semibold shadow-sm">
+            {shelter.address.city}
+          </div>
+        )}
       </div>
       
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="card-title mb-0">{shelter.nombre}</h5>
-          <div className="d-flex align-items-center">
-            {renderStars(shelter.rating)}
-            <span className="ms-1 small text-secondary">({shelter.reseñas})</span>
-          </div>
+          <h5 className="card-title mb-0">{shelter.name}</h5>
+          {shelter.reviews && (
+            <div className="d-flex align-items-center">
+              {renderStars(shelter.reviews.rating)}
+              <span className="ms-1 small text-secondary">({shelter.reviews.count || 0})</span>
+            </div>
+          )}
         </div>
         
         <p className="card-text small text-secondary mb-3" style={{ 
@@ -83,13 +72,13 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden'
         }}>
-          {shelter.descripcion}
+          {shelter.description}
         </p>
         
         <div className="d-flex justify-content-between align-items-center small">
           <div className="d-flex align-items-center text-secondary">
             <i className="bi bi-telephone me-1"></i>
-            {shelter.contacto.telefono}
+            {shelter.contact?.phone}
           </div>
           <span className="text-primary fw-medium">Ver detalles</span>
         </div>

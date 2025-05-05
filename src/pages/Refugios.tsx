@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import sheltersData from '@/data/shelters.json';
 import ShelterCard from '@/components/ui/cards/ShelterCard';
 import ShelterRegistrationModal from '@/components/features/shelter/ShelterRegistrationModal.tsx';
-import { NewShelterFormData } from '@/types/shelter';
-import { SheltersData } from '@/services/shelterService';
+import { NewShelterFormData, SheltersData, Shelter } from '@/types/shelter';
 
 const Shelters: React.FC = () => {
   const { shelters } = sheltersData as SheltersData;
@@ -76,7 +75,7 @@ const Shelters: React.FC = () => {
         />
 
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {shelters.map((shelter) => (
+          {shelters.map((shelter: Shelter) => (
             <div key={shelter.id} className="col">
               <ShelterCard shelter={shelter} />
             </div>

@@ -1,17 +1,5 @@
 import React from 'react';
-import { UseFormRegister, Path } from 'react-hook-form';
-import { NuevoRefugioFormData } from '@/types/shelter';
-
-interface ShelterFormFieldProps {
-  label: string;
-  type?: string;
-  error?: string;
-  required?: boolean;
-  rows?: number;
-  placeholder?: string;
-  register: UseFormRegister<NuevoRefugioFormData>;
-  name: Path<NuevoRefugioFormData>;
-}
+import { ShelterFormFieldProps } from '@/types/shelter';
 
 const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
   label,
@@ -30,9 +18,13 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
 
   return (
     <div className="mb-6">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-700 mb-1"
+        id={`${name}-label`}
+      >
         {label}
-        {required && <span className="text-red-500 ml-1">*</span>}
+        {required && <span className="text-red-500 ml-1" aria-hidden="true">*</span>}
       </label>
       {isTextarea ? (
         <textarea
@@ -42,7 +34,10 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
           required={required}
           rows={rows}
           placeholder={placeholder}
-          aria-describedby={`${name}-feedback`}
+          aria-labelledby={`${name}-label`}
+          aria-required={required}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={error ? `${name}-feedback` : undefined}
         />
       ) : (
         <input
@@ -52,11 +47,18 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
           {...register(name)}
           required={required}
           placeholder={placeholder}
-          aria-describedby={`${name}-feedback`}
+          aria-labelledby={`${name}-label`}
+          aria-required={required}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={error ? `${name}-feedback` : undefined}
         />
       )}
       {error && (
-        <div id={`${name}-feedback`} className="mt-1 text-sm text-red-500">
+        <div 
+          id={`${name}-feedback`} 
+          className="mt-1 text-sm text-red-500"
+          role="alert"
+        >
           {error}
         </div>
       )}

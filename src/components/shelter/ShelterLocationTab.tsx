@@ -19,19 +19,19 @@ const ShelterLocationTab: React.FC<ShelterLocationTabProps> = ({ shelter, isMapL
             <address className="mb-0">
               <p className="mb-1">
                 <i className="bi bi-house-door me-2"></i>
-                {shelter.direccion.calle}
+                {shelter.address.street}
               </p>
               <p className="mb-1">
                 <i className="bi bi-geo me-2"></i>
-                {shelter.direccion.ciudad}, {shelter.direccion.provincia}
+                {shelter.address.city}, {shelter.address.province}
               </p>
               <p className="mb-1">
                 <i className="bi bi-mailbox me-2"></i>
-                CP: {shelter.direccion.codigoPostal}
+                CP: {shelter.address.postalCode}
               </p>
               <p className="mb-0">
                 <i className="bi bi-globe me-2"></i>
-                {shelter.direccion.pais}
+                {shelter.address.country}
               </p>
             </address>
           </div>
@@ -47,8 +47,14 @@ const ShelterLocationTab: React.FC<ShelterLocationTabProps> = ({ shelter, isMapL
                   rel="noopener noreferrer"
                   aria-label="Cómo llegar con Google Maps"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      window.open(e.currentTarget.href, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
                 >
-                  <i className="bi bi-google me-2"></i>
+                  <i className="bi bi-google me-2" aria-hidden="true"></i>
                   Abrir en Google Maps
                 </a>
                 <a 
@@ -58,8 +64,14 @@ const ShelterLocationTab: React.FC<ShelterLocationTabProps> = ({ shelter, isMapL
                   rel="noopener noreferrer"
                   aria-label="Cómo llegar con Waze"
                   tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      window.open(e.currentTarget.href, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
                 >
-                  <i className="bi bi-geo-alt me-2"></i>
+                  <i className="bi bi-geo-alt me-2" aria-hidden="true"></i>
                   Abrir en Waze
                 </a>
               </div>
@@ -81,20 +93,28 @@ const ShelterLocationTab: React.FC<ShelterLocationTabProps> = ({ shelter, isMapL
                 zoomControl: true,
                 streetViewControl: true,
                 mapTypeControl: true,
+                keyboardShortcuts: true,
+                gestureHandling: 'greedy',
               }}
+              aria-label="Mapa de ubicación del refugio"
             >
               <Marker
                 position={shelter.coordinates}
                 icon={{
                   url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                 }}
+                title={`Ubicación de ${shelter.name}`}
               />
             </GoogleMap>
           ) : (
-            <div className="bg-light d-flex justify-content-center align-items-center h-100">
+            <div 
+              className="bg-light d-flex justify-content-center align-items-center h-100"
+              role="status"
+              aria-label="Cargando mapa"
+            >
               {!shelter.coordinates ? (
                 <div className="text-center">
-                  <i className="bi bi-geo-alt text-muted" style={{ fontSize: '2rem' }}></i>
+                  <i className="bi bi-geo-alt text-muted" style={{ fontSize: '2rem' }} aria-hidden="true"></i>
                   <p className="mt-2">Coordenadas no disponibles</p>
                 </div>
               ) : (

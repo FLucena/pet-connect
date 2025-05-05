@@ -21,27 +21,27 @@ const ShelterContactTab: React.FC<ShelterContactTabProps> = ({ shelter }) => {
                 <p className="mb-3">
                   <i className="bi bi-telephone me-2"></i>
                   <strong>Teléfono:</strong>{' '}
-                  <a href={`tel:${shelter.contacto.telefono}`} className="text-decoration-none">
-                    {shelter.contacto.telefono}
+                  <a href={`tel:${shelter.contact.phone}`} className="text-decoration-none">
+                    {shelter.contact.phone}
                   </a>
                 </p>
                 <p className="mb-3">
                   <i className="bi bi-envelope me-2"></i>
                   <strong>Email:</strong>{' '}
-                  <a href={`mailto:${shelter.contacto.email}`} className="text-decoration-none">
-                    {shelter.contacto.email}
+                  <a href={`mailto:${shelter.contact.email}`} className="text-decoration-none">
+                    {shelter.contact.email}
                   </a>
                 </p>
                 <p className="mb-0">
                   <i className="bi bi-globe me-2"></i>
                   <strong>Sitio web:</strong>{' '}
                   <a 
-                    href={shelter.contacto.web.startsWith('http') ? shelter.contacto.web : `https://${shelter.contacto.web}`}
+                    href={shelter.contact.website?.startsWith('http') ? shelter.contact.website : `https://${shelter.contact.website}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-decoration-none"
                   >
-                    {shelter.contacto.web}
+                    {shelter.contact.website}
                   </a>
                 </p>
               </div>
@@ -54,11 +54,11 @@ const ShelterContactTab: React.FC<ShelterContactTabProps> = ({ shelter }) => {
                 <h5 className="mb-0">Redes sociales</h5>
               </div>
               <div className="card-body">
-                {shelter.contacto.redesSociales ? (
+                {shelter.contact.socialMedia ? (
                   <>
-                    {shelter.contacto.redesSociales.facebook && (
+                    {shelter.contact.socialMedia.facebook && (
                       <a 
-                        href={`https://facebook.com/${shelter.contacto.redesSociales.facebook}`}
+                        href={`https://facebook.com/${shelter.contact.socialMedia.facebook}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline-primary mb-2 me-2"
@@ -70,9 +70,9 @@ const ShelterContactTab: React.FC<ShelterContactTabProps> = ({ shelter }) => {
                       </a>
                     )}
                     
-                    {shelter.contacto.redesSociales.instagram && (
+                    {shelter.contact.socialMedia.instagram && (
                       <a 
-                        href={`https://instagram.com/${shelter.contacto.redesSociales.instagram.replace('@', '')}`}
+                        href={`https://instagram.com/${shelter.contact.socialMedia.instagram.replace('@', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline-danger mb-2 me-2"
@@ -84,9 +84,9 @@ const ShelterContactTab: React.FC<ShelterContactTabProps> = ({ shelter }) => {
                       </a>
                     )}
                     
-                    {shelter.contacto.redesSociales.twitter && (
+                    {shelter.contact.socialMedia.twitter && (
                       <a 
-                        href={`https://twitter.com/${shelter.contacto.redesSociales.twitter.replace('@', '')}`}
+                        href={`https://twitter.com/${shelter.contact.socialMedia.twitter.replace('@', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline-info mb-2"

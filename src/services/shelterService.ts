@@ -1,60 +1,6 @@
 import sheltersData from '@/data/shelters.json';
 import { calculateDistance, getCoordinatesFromAddress } from '@/utils/locationUtils';
-
-// Define types
-export interface ShelterAddress {
-  calle: string;
-  ciudad: string;
-  provincia: string;
-  codigoPostal: string;
-  pais: string;
-}
-
-export interface ShelterContact {
-  telefono: string;
-  email: string;
-  web: string;
-  redesSociales: {
-    facebook?: string;
-    instagram?: string;
-    twitter?: string;
-  };
-}
-
-export interface Shelter {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  direccion: ShelterAddress;
-  contacto: ShelterContact;
-  rating: number;
-  reseñas: number;
-  fotos: string[];
-  estado: string;
-  servicios?: string[];
-  requisitosAdopcion?: string[];
-  horarios?: Record<string, string>;
-  estadisticas?: {
-    adopcionesExitosas: number;
-    animalesRescatados: number;
-    animalesEsterilizados: number;
-  };
-  capacidad?: {
-    maxima: number;
-    actual: number;
-  };
-  fechaRegistro?: string;
-  // Added by our service:
-  coordinates?: {
-    lat: number;
-    lng: number;
-  };
-  distance?: number;
-}
-
-export interface SheltersData {
-  shelters: Shelter[];
-}
+import { Shelter, SheltersData } from '@/types/shelter';
 
 // Service functions
 export const getShelters = (): Shelter[] => {
@@ -70,7 +16,7 @@ export const getSheltersWithCoordinates = async (): Promise<Shelter[]> => {
   const sheltersWithCoordinates: Shelter[] = [];
   
   for (const shelter of shelters) {
-    const addressStr = `${shelter.direccion.calle}, ${shelter.direccion.ciudad}, ${shelter.direccion.provincia}, ${shelter.direccion.pais}`;
+    const addressStr = `${shelter.address.street}, ${shelter.address.city}, ${shelter.address.province}, ${shelter.address.country}`;
     const coordinates = await getCoordinatesFromAddress(addressStr);
     
     if (coordinates) {
