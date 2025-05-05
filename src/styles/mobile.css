@@ -1,0 +1,195 @@
+/* Mobile-specific styles */
+@media (max-width: 992px) {
+  /* Header spacer adjustments */
+  .header-spacer {
+    height: 64px !important;
+    min-height: 64px !important;
+  }
+
+  /* Hamburger menu styles */
+  .hamburger-menu {
+    padding: 0.5rem;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger-menu__icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-menu__line {
+    width: 100%;
+    height: 2px;
+    background-color: #1E354B;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger-menu__icon.active .hamburger-menu__line:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  .hamburger-menu__icon.active .hamburger-menu__line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu__icon.active .hamburger-menu__line:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  /* Logo adjustments */
+  .navbar-brand {
+    max-width: 150px !important;
+    padding: 0.5rem 0;
+  }
+
+  .navbar-brand img {
+    max-height: 36px !important;
+  }
+
+  /* Touch-friendly button sizes */
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+  }
+
+  /* Touch-friendly input sizes */
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+
+  /* Optimize images for mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Mobile-specific card styles */
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile navigation */
+  .navbar-nav {
+    padding: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  /* Mobile-specific spacing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Mobile-specific typography */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Mobile-specific grid adjustments */
+  .row {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  [class*="col-"] {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Mobile-specific modal adjustments */
+  .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .modal-content {
+    border-radius: 0;
+  }
+
+  /* Mobile-specific form adjustments */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile-specific button groups */
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .btn-group .btn {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* Touch-friendly hover states */
+@media (hover: none) {
+  .hover-shadow:hover,
+  .hover-scale:hover,
+  .hover-grow:hover,
+  .hover-glow:hover,
+  .hover-opacity-100:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Optimize tap targets */
+a, button, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Responsive nav link sizing for accessibility */
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    font-size: 15px !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .navbar-nav .nav-link {
+    font-size: 14px !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+} 

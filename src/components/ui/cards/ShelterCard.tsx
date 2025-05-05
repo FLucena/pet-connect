@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface Refugio {
+interface Shelter {
   id: string;
   nombre: string;
   descripcion: string;
@@ -13,16 +13,16 @@ interface Refugio {
     telefono: string;
     email: string;
   };
-  rating: number;
+  rating: number; 
   reseñas: number;
   fotos: string[];
 }
 
-interface RefugioCardProps {
-  refugio: Refugio;
+interface ShelterCardProps {
+  shelter: Shelter;
 }
 
-const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
+const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
   const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -42,17 +42,21 @@ const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
 
   return (
     <Link
-      to={`/refugios/${refugio.id}`}
+      to={`/refugios/${shelter.id}`}
       className="card h-100 text-decoration-none text-dark hover-shadow"
       style={{ transition: 'all 0.3s ease' }}
     >
-      <div className="position-relative" style={{ aspectRatio: '4/3' }}>
-        {refugio.fotos && refugio.fotos.length > 0 ? (
+      <div className="position-relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+        {shelter.fotos && shelter.fotos.length > 0 ? (
           <img
-            src={refugio.fotos[0]}
-            alt={refugio.nombre}
-            className="card-img-top h-100 object-fit-cover"
-            style={{ transition: 'transform 0.3s ease' }}
+            src={shelter.fotos[0]}
+            alt={shelter.nombre}
+            className="card-img-top h-100 object-fit-cover transition-transform duration-300 hover-scale"
+            style={{ 
+              willChange: 'transform',
+              transform: 'scale(1)',
+              transformOrigin: 'center'
+            }}
           />
         ) : (
           <div className="card-img-top h-100 d-flex align-items-center justify-content-center bg-light text-secondary">
@@ -60,16 +64,16 @@ const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
           </div>
         )}
         <div className="position-absolute top-0 end-0 m-2 bg-white rounded-pill px-2 py-1 small fw-semibold shadow-sm">
-          {refugio.direccion.ciudad}
+          {shelter.direccion.ciudad}
         </div>
       </div>
       
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="card-title mb-0">{refugio.nombre}</h5>
+          <h5 className="card-title mb-0">{shelter.nombre}</h5>
           <div className="d-flex align-items-center">
-            {renderStars(refugio.rating)}
-            <span className="ms-1 small text-secondary">({refugio.reseñas})</span>
+            {renderStars(shelter.rating)}
+            <span className="ms-1 small text-secondary">({shelter.reseñas})</span>
           </div>
         </div>
         
@@ -79,13 +83,13 @@ const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden'
         }}>
-          {refugio.descripcion}
+          {shelter.descripcion}
         </p>
         
         <div className="d-flex justify-content-between align-items-center small">
           <div className="d-flex align-items-center text-secondary">
             <i className="bi bi-telephone me-1"></i>
-            {refugio.contacto.telefono}
+            {shelter.contacto.telefono}
           </div>
           <span className="text-primary fw-medium">Ver detalles</span>
         </div>
@@ -94,4 +98,4 @@ const RefugioCard: React.FC<RefugioCardProps> = ({ refugio }) => {
   );
 };
 
-export default RefugioCard; 
+export default ShelterCard; 

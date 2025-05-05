@@ -1,4 +1,4 @@
-label {
+.contacto-form label {
     position: relative;
     top: -40px;
     left: -5px;
@@ -8,18 +8,18 @@ label {
     pointer-events: none; /* Evita que el label interfiera con el clic */
 }
 
-input:focus + label,
-input:not(:placeholder-shown) + label{
+.contacto-form input:focus + label,
+.contacto-form input:not(:placeholder-shown) + label{
   transform: translateY(-25px);
   color: #007bff;
 }
-textarea:focus + label,
-textarea:not(:placeholder-shown) + label {
+.contacto-form textarea:focus + label,
+.contacto-form textarea:not(:placeholder-shown) + label {
     transform: translateY(-85px);
     color: #007bff;
 }
 
-.input-border-bottom {
+.contacto-form .input-border-bottom {
     border: none; 
     border-bottom: 2px solid #ccc;
     border-radius: 0; 
@@ -29,12 +29,12 @@ textarea:not(:placeholder-shown) + label {
     line-height: 1.5;
 }
 
-.input-border-bottom:focus {
+.contacto-form .input-border-bottom:focus {
     border-bottom: 2px solid #007bff; 
     box-shadow: none;
 }
 
-textarea.input-border-bottom {
+.contacto-form textarea.input-border-bottom {
   resize: none; /* Evita que el usuario cambie el tamaño del textarea */
   padding: 12px 0; /* Ajusta el padding para que el texto no quede pegado arriba */
   line-height: 1.5; /* Ajusta el espaciado del texto */

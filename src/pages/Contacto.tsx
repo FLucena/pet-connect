@@ -22,7 +22,7 @@ const Contacto: React.FC = () => {
                 <div className="card shadow-sm h-100" style={{ borderRadius: '0' }}>
                   <div className="card-body p-4">
                     <h1 className="text-center mb-5">Contacto</h1>
-                    <form className="needs-validation" noValidate>
+                    <form className="needs-validation contacto-form" noValidate>
                       <div className="mb-3">
                         <input
                           type="text"
