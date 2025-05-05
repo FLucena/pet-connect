@@ -52,13 +52,13 @@ export interface Shelter {
   distance?: number;
 }
 
-interface SheltersData {
-  refugios: Shelter[];
+export interface SheltersData {
+  shelters: Shelter[];
 }
 
 // Service functions
 export const getShelters = (): Shelter[] => {
-  return (sheltersData as SheltersData).refugios;
+  return (sheltersData as SheltersData).shelters;
 };
 
 export const getShelterById = (id: string): Shelter | undefined => {

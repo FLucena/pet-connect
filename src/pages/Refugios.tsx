@@ -1,44 +1,44 @@
-import React from 'react';
-import refugiosData from '@/data/shelters.json';
-import RefugioCard from '@/components/RefugioCard';
+import React, { useState } from 'react';
+import sheltersData from '@/data/shelters.json';
+import ShelterCard from '@/components/ui/cards/ShelterCard';
+import ShelterRegistrationModal from '@/components/features/shelter/ShelterRegistrationModal.tsx';
+import { NewShelterFormData } from '@/types/shelter';
+import { SheltersData } from '@/services/shelterService';
 
-interface Refugio {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  direccion: {
-    calle: string;
-    ciudad: string;
-    provincia: string;
-    codigoPostal: string;
-    pais: string;
-  };
-  contacto: {
-    telefono: string;
-    email: string;
-    web: string;
-    redesSociales: {
-      facebook?: string;
-      instagram?: string;
-      twitter?: string;
-    };
-  };
-  rating: number;
-  reseñas: number;
-  fotos: string[];
-  estado: string;
-}
-
-interface RefugiosData {
-  refugios: Refugio[];
-}
-
-const Refugios: React.FC = () => {
-  const { refugios } = refugiosData as RefugiosData;
+const Shelters: React.FC = () => {
+  const { shelters } = sheltersData as SheltersData;
+  const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCreateRefugio = () => {
-    // TODO: Implement create refugio functionality
-    console.log('Create new refugio clicked');
+    setError(null);
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+    setError(null);
+  };
+
+  const handleSubmitRefugio = async (data: NewShelterFormData) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      // TODO: Replace with actual API call
+      console.log('New shelter data:', data);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setShowForm(false);
+    } catch (err) {
+      setError('Error al crear el refugio. Por favor, inténtalo de nuevo.');
+      console.error('Error creating shelter:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -55,16 +55,30 @@ const Refugios: React.FC = () => {
             <button
               onClick={handleCreateRefugio}
               className="btn btn-primary btn-lg"
+              disabled={isLoading || showForm}
             >
               Crear Nuevo Refugio
             </button>
           </div>
         </div>
 
+        {error && (
+          <div className="alert alert-danger" role="alert">
+            {error}
+          </div>
+        )}
+
+        <ShelterRegistrationModal
+          isOpen={showForm}
+          onClose={handleCloseForm}
+          onSubmit={handleSubmitRefugio}
+          isLoading={isLoading}
+        />
+
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {refugios.map((refugio) => (
-            <div key={refugio.id} className="col">
-              <RefugioCard refugio={refugio} />
+          {shelters.map((shelter) => (
+            <div key={shelter.id} className="col">
+              <ShelterCard shelter={shelter} />
             </div>
           ))}
         </div>
@@ -73,4 +87,4 @@ const Refugios: React.FC = () => {
   );
 };
 
-export default Refugios; 
+export default Shelters; 

@@ -1,43 +1,57 @@
 import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import './styles/skeleton.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Inicio from './pages/Inicio';
-import Refugios from './pages/Refugios';
-import Adoptar from './pages/Adoptar';
-import Contacto from './pages/Contacto';
-import QuienesSomos from './pages/QuienesSomos';
-import PreguntasFrecuentes from './pages/PreguntasFrecuentes';
-import Blog from './pages/Blog';
-import Terminos from './pages/Terminos';
-import Privacidad from './pages/Privacidad';
-import Mascota from './pages/Mascota';
-import UserLocation from './pages/UserLocation';
-import ShelterDetail from './pages/ShelterDetail';
+import { ErrorBoundary } from './components/ui/ErrorBoundary';
+import LoadingSpinner from './components/ui/LoadingSpinner';
+
+// Lazy load all pages
+const Inicio = lazy(() => import('./pages/Inicio'));
+const Refugios = lazy(() => import('./pages/Refugios'));
+const Adoptar = lazy(() => import('./pages/Adoptar'));
+const Contacto = lazy(() => import('./pages/Contacto'));
+const QuienesSomos = lazy(() => import('./pages/QuienesSomos'));
+const PreguntasFrecuentes = lazy(() => import('./pages/PreguntasFrecuentes'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Terminos = lazy(() => import('./pages/Terminos'));
+const Privacidad = lazy(() => import('./pages/Privacidad'));
+const Pet = lazy(() => import('./pages/Mascota'));
+const UserLocation = lazy(() => import('./pages/UserLocation'));
+const ShelterDetail = lazy(() => import('./pages/DetalleRefugio'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Registrarse'));
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Header />
-      <main className="flex-grow-1">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/refugios" element={<Refugios />} />
-          <Route path="/refugios/:id" element={<ShelterDetail />} />
-          <Route path="/adoptar" element={<Adoptar />} />
-          <Route path="/mascota/:id" element={<Mascota />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/quienes-somos" element={<QuienesSomos />} />
-          <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/terminos" element={<Terminos />} />
-          <Route path="/privacidad" element={<Privacidad />} />
-          <Route path="/ubicacion" element={<UserLocation />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <main className="flex-grow-1">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Inicio />} />
+              <Route path="/refugios" element={<Refugios />} />
+              <Route path="/refugios/:id" element={<ShelterDetail />} />
+              <Route path="/adoptar" element={<Adoptar />} />
+              <Route path="/mascota/:id" element={<Pet />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/quienes-somos" element={<QuienesSomos />} />
+              <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/terminos" element={<Terminos />} />
+              <Route path="/privacidad" element={<Privacidad />} />
+              <Route path="/ubicacion" element={<UserLocation />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 }
 
