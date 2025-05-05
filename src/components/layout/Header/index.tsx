@@ -62,6 +62,9 @@ const Header: React.FC = () => {
   return (
     <>
       <header style={headerStyle}>
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido principal
+        </a>
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container position-relative">
             <Link to="/" className="navbar-brand d-flex align-items-center" style={{ maxWidth: '200px' }}>
@@ -85,6 +88,8 @@ const Header: React.FC = () => {
             <div 
               className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} 
               id="navbarNav"
+              role="navigation"
+              aria-label="Main navigation"
               style={{
                 transition: 'all 0.3s ease-in-out',
                 maxHeight: isMenuOpen ? '1000px' : 'none',
@@ -95,8 +100,8 @@ const Header: React.FC = () => {
               }}
             >
               <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center w-100">
-                <ul className="navbar-nav position-absolute start-50 translate-middle-x mb-2 mb-lg-0">
-                  <li className="nav-item">
+                <ul className="navbar-nav position-absolute start-50 translate-middle-x mb-2 mb-lg-0" role="menubar">
+                  <li className="nav-item" role="none">
                     <Link 
                       to="/" 
                       className={`nav-link px-3 ${isActive('/')}`}
@@ -108,11 +113,13 @@ const Header: React.FC = () => {
                         Object.assign(e.currentTarget.style, navLinkStyle);
                       }}
                       onClick={() => setIsMenuOpen(false)}
+                      role="menuitem"
+                      aria-current={isActive('/') ? 'page' : undefined}
                     >
                       Inicio
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item" role="none">
                     <Link 
                       to="/refugios" 
                       className={`nav-link px-3 ${isActive('/refugios')}`}
@@ -124,11 +131,13 @@ const Header: React.FC = () => {
                         Object.assign(e.currentTarget.style, navLinkStyle);
                       }}
                       onClick={() => setIsMenuOpen(false)}
+                      role="menuitem"
+                      aria-current={isActive('/refugios') ? 'page' : undefined}
                     >
                       Refugios
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item" role="none">
                     <Link 
                       to="/adoptar" 
                       className={`nav-link px-3 ${isActive('/adoptar')}`}
@@ -140,6 +149,8 @@ const Header: React.FC = () => {
                         Object.assign(e.currentTarget.style, navLinkStyle);
                       }}
                       onClick={() => setIsMenuOpen(false)}
+                      role="menuitem"
+                      aria-current={isActive('/adoptar') ? 'page' : undefined}
                     >
                       Adoptar
                     </Link>

@@ -79,15 +79,15 @@ export interface Pet {
 }
 
 // UI filter type (used in React components)
-export type PetFilterValues = {
+export interface PetFilterValues {
   type: PetType | '';
-  sex: Sex | '';
   age: AgeCategory | '';
-  breed: string;
   size: Size | '';
+  sex: Sex | '';
+  breed: string;
   status: Status | '';
   searchTerm: string; // UI only
-};
+}
 
 // Backend/API filter type (used for API calls, etc.)
 export interface PetFilters {

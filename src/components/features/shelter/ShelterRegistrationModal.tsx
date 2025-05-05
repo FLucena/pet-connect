@@ -26,14 +26,17 @@ const schema = yup.object().shape({
   contact: yup.object().shape({
     phone: yup.string().required('El teléfono es requerido'),
     email: yup.string().email('El email no es válido').required('El email es requerido'),
-    web: yup.string().url('La URL no es válida').nullable(),
+    website: yup.string().url('La URL no es válida').optional(),
     socialMedia: yup.object().shape({
-      facebook: yup.string().url('La URL no es válida').nullable(),
-      instagram: yup.string().url('La URL no es válida').nullable(),
-      twitter: yup.string().url('La URL no es válida').nullable(),
+      facebook: yup.string().url('La URL no es válida').optional(),
+      instagram: yup.string().url('La URL no es válida').optional(),
+      twitter: yup.string().url('La URL no es válida').optional(),
     }),
   }),
-});
+  services: yup.array().of(yup.string()).default([]),
+  adoptionRequirements: yup.array().of(yup.string()).default([]),
+  openingHours: yup.object().default({}),
+}) as yup.ObjectSchema<NewShelterFormData>;
 
 const defaultValues: NewShelterFormData = {
   name: '',
@@ -48,13 +51,16 @@ const defaultValues: NewShelterFormData = {
   contact: {
     phone: '',
     email: '',
-    web: '',
+    website: '',
     socialMedia: {
       facebook: '',
       instagram: '',
       twitter: '',
     },
   },
+  services: [],
+  adoptionRequirements: [],
+  openingHours: {},
 };
 
 const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
@@ -239,8 +245,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="Sitio Web"
                         type="url"
                         register={register}
-                        name="contact.web"
-                        error={errors.contact?.web?.message}
+                        name="contact.website"
+                        error={errors.contact?.website?.message}
                       />
                     </div>
                   </div>
