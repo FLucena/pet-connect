@@ -4,7 +4,7 @@ interface LogoProps {
   size?: 'small' | 'large';
 }
 
-const Logo: React.FC<LogoProps> = ({ size = 'small' }) => {
+const Logo: React.FC<LogoProps> = React.memo(({ size = 'small' }) => {
   const maxHeight = size === 'large' ? '500px' : '48px';
 
   return (
@@ -23,6 +23,8 @@ const Logo: React.FC<LogoProps> = ({ size = 'small' }) => {
       />
     </div>
   );
-};
+});
+
+Logo.displayName = 'Logo';
 
 export default Logo;

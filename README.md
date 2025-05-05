@@ -25,10 +25,8 @@ Una aplicación web moderna construida con React, TypeScript y Vite que conecta 
 | Nombre | Email | LinkedIn |
 |:------:|:-----:|:--------:|
 | Francisco Lucena | franciscolucena90@gmail.com | [LinkedIn](https://www.linkedin.com/in/franciscoivanlucena/) |
-| Julio Fidanza | juliofidanza@gmail.com | - |
+| Gabriela Deza Arévalo | gabriela@gmail.com | - |
 | Lautaro Valdenegro | lautarokmn@gmail.com | [LinkedIn](https://www.linkedin.com/in/lautaro-valdenegro-5bb8ab2b5/) |
-| Matías Carabajal | Matias.carabajal@estudiantes.unahur.edu.ar | - |
-| Santiago Aguilera | aguilera.santi11@gmail.com | [LinkedIn](https://www.linkedin.com/in/santiago-aguilera99/) |
 
 ## Comenzando
 

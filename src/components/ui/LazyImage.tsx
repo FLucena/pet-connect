@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './LazyImage.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 interface LazyImageProps {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   className?: string;
   placeholderSrc?: string;
+  threshold?: number;
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
@@ -16,54 +18,38 @@ const LazyImage: React.FC<LazyImageProps> = ({
   width,
   height,
   className = '',
-  placeholderSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlZWVlZWUiLz48L3N2Zz4='
+  placeholderSrc = '/placeholder.jpg',
+  threshold = 100,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string>(placeholderSrc);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const img = new Image();
     img.src = src;
-    
     img.onload = () => {
-      setIsLoaded(true);
+      setImageSrc(src);
+      setIsLoading(false);
     };
-    
     img.onerror = () => {
-      setError(true);
+      // Fallback to placeholder if image fails to load
+      setImageSrc(placeholderSrc);
+      setIsLoading(false);
     };
-
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [src]);
+  }, [src, placeholderSrc]);
 
   return (
-    <div 
-      className={`lazy-image-container ${className}`}
-      style={{ width: width ? `${width}px` : '100%', height: height ? `${height}px` : 'auto' }}
-    >
-      {!isLoaded && !error && (
-        <img
-          src={placeholderSrc}
-          alt="Loading..."
-          className="lazy-image-placeholder"
-        />
-      )}
-      {error ? (
-        <div className="lazy-image-error">Failed to load image</div>
-      ) : (
-        <img
-          src={src}
-          alt={alt}
-          className={`lazy-image ${isLoaded ? 'loaded' : ''}`}
-          loading="lazy"
-          width={width}
-          height={height}
-        />
-      )}
-    </div>
+    <LazyLoadImage
+      src={imageSrc}
+      alt={alt}
+      width={width}
+      height={height}
+      className={`${className} ${isLoading ? 'loading' : ''}`}
+      effect="blur"
+      threshold={threshold}
+      placeholderSrc={placeholderSrc}
+      useIntersectionObserver
+    />
   );
 };
 

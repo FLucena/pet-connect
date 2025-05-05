@@ -5,6 +5,7 @@ import { useJsApiLoader } from '@react-google-maps/api';
 import ShelterInfoTab from '@/components/shelter/ShelterInfoTab';
 import ShelterLocationTab from '@/components/shelter/ShelterLocationTab';
 import ShelterContactTab from '@/components/shelter/ShelterContactTab';
+import DonationSection from '@/components/DonationSection';
 import { Shelter } from '@/types/shelter';
 
 
@@ -84,69 +85,62 @@ const DetalleRefugio: React.FC = () => {
             </ol>
           </nav>
 
-          <div className="card shadow-sm mb-4">
-            <div className="card-body">
-              <h1 className="h2 mb-4">{shelter.name}</h1>
-              <p className="lead">{shelter.description}</p>
+          <div className="row">
+            <div className="col-md-8">
+              <div className="card shadow-sm mb-4">
+                <div className="card-body">
+                  <h1 className="h2 mb-4">{shelter.name}</h1>
+                  <p className="lead">{shelter.description}</p>
+                </div>
+              </div>
+
+              <ul className="nav nav-tabs mb-4" role="tablist">
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'info' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('info')}
+                    role="tab"
+                    aria-selected={activeTab === 'info'}
+                  >
+                    Información
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'location' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('location')}
+                    role="tab"
+                    aria-selected={activeTab === 'location'}
+                  >
+                    Ubicación
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'contact' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('contact')}
+                    role="tab"
+                    aria-selected={activeTab === 'contact'}
+                  >
+                    Contacto
+                  </button>
+                </li>
+              </ul>
+
+              <div className="tab-content">
+                {activeTab === 'info' && <ShelterInfoTab shelter={shelter} />}
+                {activeTab === 'location' && <ShelterLocationTab shelter={shelter} isMapLoaded={isLoaded} />}
+                {activeTab === 'contact' && <ShelterContactTab shelter={shelter} />}
+              </div>
             </div>
-          </div>
-
-          <ul className="nav nav-tabs mb-4" role="tablist">
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'info' ? 'active' : ''}`}
-                onClick={() => setActiveTab('info')}
-                role="tab"
-                aria-selected={activeTab === 'info'}
-              >
-                Información
-              </button>
-            </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'location' ? 'active' : ''}`}
-                onClick={() => setActiveTab('location')}
-                role="tab"
-                aria-selected={activeTab === 'location'}
-              >
-                Ubicación
-              </button>
-            </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'contact' ? 'active' : ''}`}
-                onClick={() => setActiveTab('contact')}
-                role="tab"
-                aria-selected={activeTab === 'contact'}
-              >
-                Contacto
-              </button>
-            </li>
-          </ul>
-
-          <div className="tab-content">
-            {activeTab === 'info' && (
-              <div className="tab-pane fade show active" role="tabpanel">
-                <ShelterInfoTab
-                  shelter={shelter}
-                />
-              </div>
-            )}
-            {activeTab === 'location' && (
-              <div className="tab-pane fade show active" role="tabpanel">
-                <ShelterLocationTab
-                  shelter={shelter}
-                  isMapLoaded={isLoaded}
-                />
-              </div>
-            )}
-            {activeTab === 'contact' && (
-              <div className="tab-pane fade show active" role="tabpanel">
-                <ShelterContactTab
-                  shelter={shelter}
-                />
-              </div>
-            )}
+            
+            <div className="col-md-4">
+              <DonationSection 
+                type="shelter"
+                shelterName={shelter.name} 
+                shelterId={shelter.id} 
+              />
+            </div>
           </div>
         </div>
       </div>
