@@ -92,27 +92,27 @@
         "thursday": "09:00 - 17:00",
         "friday": "09:00 - 17:00",
         "saturday": "10:00 - 13:00",
-        "sunday": "Closed"
+        "sunday": "Cerrado"
       },
       "capacity": {
         "max": 40,
         "current": 28
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Temporary care",
-        "Rehabilitation"
+        "Cuidado temporal",
+        "Rehabilitación"
       ],
       "adoptionRequirements": [
-        "Over 18 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Home visit"
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria"
       ],
       "statistics": {
         "successfulAdoptions": 850,
@@ -167,20 +167,20 @@
         "current": 45
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Rehabilitation",
-        "Basic training"
+        "Rehabilitación",
+        "Entrenamiento básico"
       ],
       "adoptionRequirements": [
-        "Over 18 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Home visit"
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria"
       ],
       "statistics": {
         "successfulAdoptions": 950,
@@ -228,27 +228,27 @@
         "thursday": "10:00 - 18:00",
         "friday": "10:00 - 18:00",
         "saturday": "10:00 - 14:00",
-        "sunday": "Closed"
+        "sunday": "Cerrado"
       },
       "capacity": {
         "max": 40,
         "current": 32
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Special cat care",
-        "Socialization"
+        "Cuidado especial para gatos",
+        "Socialización"
       ],
       "adoptionRequirements": [
-        "Over 21 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Sterilization commitment"
+        "Mayor de 21 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Compromiso de esterilización"
       ],
       "statistics": {
         "successfulAdoptions": 700,
@@ -303,22 +303,22 @@
         "current": 75
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Rehabilitation",
-        "Community education",
-        "Volunteering"
+        "Rehabilitación",
+        "Educación comunitaria",
+        "Voluntariado"
       ],
       "adoptionRequirements": [
-        "Over 18 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Home visit",
-        "Responsible ownership course"
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de tenencia responsable"
       ],
       "statistics": {
         "successfulAdoptions": 1500,
@@ -366,29 +366,29 @@
         "thursday": "09:00 - 18:00",
         "friday": "09:00 - 18:00",
         "saturday": "10:00 - 15:00",
-        "sunday": "Closed"
+        "sunday": "Cerrado"
       },
       "capacity": {
         "max": 45,
         "current": 38
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Advanced training",
-        "Rehabilitation",
-        "Assisted therapy"
+        "Entrenamiento avanzado",
+        "Rehabilitación",
+        "Terapia asistida"
       ],
       "adoptionRequirements": [
-        "Over 25 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Home visit",
-        "Large breed handling course"
+        "Mayor de 25 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de manejo de razas grandes"
       ],
       "statistics": {
         "successfulAdoptions": 600,
@@ -443,23 +443,23 @@
         "current": 65
       },
       "services": [
-        "Adoption",
-        "Sterilization",
-        "Vaccination",
+        "Adopción",
+        "Esterilización",
+        "Vacunación",
         "Microchip",
-        "Rehabilitation",
-        "Environmental education",
-        "Volunteering",
-        "Wildlife care"
+        "Rehabilitación",
+        "Educación ambiental",
+        "Voluntariado",
+        "Cuidado de fauna silvestre"
       ],
       "adoptionRequirements": [
-        "Over 18 years old",
-        "Identity document",
-        "Proof of address",
-        "Previous interview",
-        "Adoption contract signature",
-        "Home visit",
-        "Responsible ownership course"
+        "Mayor de 18 años",
+        "Documento de identidad",
+        "Comprobante de domicilio",
+        "Entrevista previa",
+        "Firma de contrato de adopción",
+        "Visita domiciliaria",
+        "Curso de tenencia responsable"
       ],
       "statistics": {
         "successfulAdoptions": 1100,

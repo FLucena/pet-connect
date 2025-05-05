@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Footer: React.FC = () => {
+const Footer: React.FC = React.memo(() => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -68,6 +68,7 @@ const Footer: React.FC = () => {
               <li className="mb-2">
                 <Link to="/privacidad" className="text-light text-decoration-none">Privacidad</Link>
               </li>
+              <li><Link to="/donar" className="text-light text-decoration-none">Donar</Link></li>
             </ul>
           </div>
 
@@ -112,6 +113,8 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

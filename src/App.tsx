@@ -23,6 +23,11 @@ const UserLocation = lazy(() => import('./pages/UserLocation'));
 const ShelterDetail = lazy(() => import('./pages/DetalleRefugio'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Registrarse'));
+const DonationSuccess = lazy(() => import('./pages/DonationSuccess'));
+const DonationFailure = lazy(() => import('./pages/DonationFailure'));
+const DonationPending = lazy(() => import('./pages/DonationPending'));
+const Donar = lazy(() => import('./pages/Donar'));
+const DonationDashboard = lazy(() => import('./pages/DonationDashboard'));
 
 function App() {
   return (
@@ -46,6 +51,11 @@ function App() {
               <Route path="/ubicacion" element={<UserLocation />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/donation/success" element={<DonationSuccess />} />
+              <Route path="/donation/failure" element={<DonationFailure />} />
+              <Route path="/donation/pending" element={<DonationPending />} />
+              <Route path="/donar" element={<Donar />} />
+              <Route path="/admin/donaciones" element={<DonationDashboard />} />
             </Routes>
           </Suspense>
         </main>

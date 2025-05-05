@@ -13,6 +13,8 @@ import { PetBehavior } from '@/components/pet/PetBehavior';
 import { PetHistory } from '@/components/pet/PetHistory';
 import { PetCare } from '@/components/pet/PetCare';
 import { PetStatus } from '@/components/pet/PetStatus';
+import AdoptionForm from '@/components/features/adoption/AdoptionForm';
+import { STATUS } from '@/constants/adoption';
 
 const PetDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,6 +22,7 @@ const PetDetail: React.FC = () => {
   const [pet, setPet] = useState<Pet | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showAdoptionForm, setShowAdoptionForm] = useState(false);
 
   useEffect(() => {
     const loadPet = async () => {
@@ -133,8 +136,49 @@ const PetDetail: React.FC = () => {
               <PetHistory history={pet.history} />
               <PetCare care={pet.care} />
               <PetStatus status={pet.status} relationships={pet.relationships} name={pet.name} />
+              
+              {pet.status === STATUS.AVAILABLE && (
+                <div className="card shadow-sm mt-4">
+                  <div className="card-body">
+                    <button 
+                      className="btn btn-primary btn-lg w-100"
+                      onClick={() => setShowAdoptionForm(true)}
+                    >
+                      <i className="bi bi-heart-fill me-2"></i>
+                      Adoptar a {pet.name}
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
+
+          {showAdoptionForm && (
+            <div className="modal show d-block" tabIndex={-1}>
+              <div className="modal-dialog modal-lg">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Formulario de Adopción - {pet.name}</h5>
+                    <button 
+                      type="button" 
+                      className="btn-close" 
+                      onClick={() => setShowAdoptionForm(false)}
+                    ></button>
+                  </div>
+                  <div className="modal-body">
+                    <AdoptionForm 
+                      isOpen={showAdoptionForm}
+                      onClose={() => setShowAdoptionForm(false)}
+                      onSubmit={(data) => {
+                        console.log('Form submitted:', data);
+                        // TODO: Handle form submission
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </ErrorBoundary>

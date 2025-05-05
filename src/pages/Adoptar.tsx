@@ -20,70 +20,70 @@ const fetchPets = async (): Promise<Pet[]> => {
   // Transform the data to match our Pet interface
   return data.map(pet => ({
     id: pet.id,
-    type: pet.tipo as PetType,
-    name: pet.nombre,
-    breed: pet.raza,
+    type: pet.type as PetType,
+    name: pet.name,
+    breed: pet.breed,
     age: {
-      years: pet.edad.años,
-      months: pet.edad.meses
+      years: pet.age.years,
+      months: pet.age.months
     },
-    sex: pet.sexo as Sex,
-    size: pet.tamaño as Size,
-    weight: pet.peso,
+    sex: pet.sex as Sex,
+    size: pet.size as Size,
+    weight: pet.weight,
     color: pet.color,
     physicalCharacteristics: {
-      coat: pet.caracteristicasFisicas.pelaje,
-      ears: pet.caracteristicasFisicas.orejas,
-      tail: pet.caracteristicasFisicas.cola,
-      specialMarks: pet.caracteristicasFisicas.marcasEspeciales
+      coat: pet.physicalCharacteristics.coat,
+      ...(pet.physicalCharacteristics.ears && { ears: pet.physicalCharacteristics.ears }),
+      ...(pet.physicalCharacteristics.tail && { tail: pet.physicalCharacteristics.tail }),
+      specialMarks: pet.physicalCharacteristics.specialMarks
     },
     health: {
-      status: pet.salud.estado,
-      vaccines: pet.salud.vacunas,
-      lastVaccine: pet.salud.ultimaVacuna,
-      sterilized: pet.salud.esterilizado,
-      sterilizationDate: pet.salud.fechaEsterilizacion,
-      microchip: pet.salud.microchip,
-      microchipNumber: pet.salud.numeroMicrochip,
-      specialConditions: pet.salud.condicionesEspeciales,
-      allergies: pet.salud.alergias,
-      medications: pet.salud.medicamentos
+      status: pet.health.status,
+      vaccines: pet.health.vaccines,
+      lastVaccine: pet.health.lastVaccine,
+      sterilized: pet.health.sterilized,
+      sterilizationDate: pet.health.sterilizationDate,
+      microchip: pet.health.microchip,
+      microchipNumber: pet.health.microchipNumber,
+      specialConditions: pet.health.specialConditions,
+      allergies: pet.health.allergies,
+      medications: pet.health.medications
     },
     behavior: {
-      energy: pet.comportamiento.energia,
-      sociability: pet.comportamiento.sociabilidad,
-      training: pet.comportamiento.entrenamiento,
-      goodWithChildren: pet.comportamiento.buenoConNinos,
-      goodWithDogs: pet.comportamiento.buenoConPerros,
-      goodWithCats: pet.comportamiento.buenoConGatos,
-      character: pet.comportamiento.caracter,
-      specialNeeds: pet.comportamiento.necesidadesEspeciales
+      energy: pet.behavior.energy,
+      sociability: pet.behavior.sociability,
+      training: pet.behavior.training,
+      goodWithChildren: pet.behavior.goodWithChildren,
+      goodWithDogs: pet.behavior.goodWithDogs,
+      goodWithCats: pet.behavior.goodWithCats,
+      character: pet.behavior.character,
+      specialNeeds: pet.behavior.specialNeeds
     },
     history: {
-      origin: pet.historia.origen,
-      rescueDate: pet.historia.fechaRescate,
-      rescueCircumstances: pet.historia.circunstanciasRescate,
-      medicalHistory: pet.historia.historiaMedica,
-      specialNotes: pet.historia.notasEspeciales
+      origin: pet.history.origin,
+      rescueDate: pet.history.rescueDate,
+      rescueCircumstances: pet.history.rescueCircumstances,
+      medicalHistory: pet.history.medicalHistory,
+      specialNotes: pet.history.specialNotes
     },
     care: {
-      feeding: pet.cuidados.alimentacion,
-      exercise: pet.cuidados.ejercicio,
-      grooming: pet.cuidados.aseo,
-      specialNeeds: pet.cuidados.necesidadesEspeciales
+      feeding: pet.care.feeding,
+      exercise: pet.care.exercise,
+      grooming: pet.care.grooming,
+      specialNeeds: pet.care.specialNeeds
     },
     relationships: {
-      currentShelter: pet.relaciones.refugioActual,
-      shelterEntryDate: pet.relaciones.fechaIngresoRefugio,
-      currentAdopter: pet.relaciones.adoptanteActual,
-      previousAdopters: pet.relaciones.adoptantesAnteriores,
-      currentFoster: pet.relaciones.fosterActual,
-      previousFosters: pet.relaciones.fostersAnteriores
+      currentShelter: pet.relationships.currentShelter,
+      shelterEntryDate: pet.relationships.shelterEntryDate,
+      currentAdopter: pet.relationships.currentAdopter,
+      previousAdopters: pet.relationships.previousAdopters,
+      currentFoster: pet.relationships.currentFoster,
+      previousFosters: pet.relationships.previousFosters
     },
-    photos: pet.fotos,
-    status: pet.estado as Status,
-    registrationDate: pet.fechaRegistro,
-    lastUpdate: pet.ultimaActualizacion
+    photos: pet.photos,
+    status: pet.status as Status,
+    registrationDate: pet.registrationDate,
+    lastUpdate: pet.lastUpdate
   }));
 };
 

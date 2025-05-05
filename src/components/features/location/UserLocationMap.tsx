@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow, Autocomplete } from '@react-google-maps/api';
+import { ApiError, ApiErrorCode } from '@/utils/errorHandler';
 
 // TODO: Migrate to AdvancedMarkerElement when @react-google-maps/api supports it
 // See: https://developers.google.com/maps/documentation/javascript/reference/marker#AdvancedMarkerElement
@@ -243,8 +244,17 @@ const UserLocationMap = ({
 
   // Error handling
   useEffect(() => {
-    if (loadError && onError) {
-      onError(loadError);
+    if (loadError) {
+      const error = new ApiError(
+        'Error al cargar Google Maps',
+        500,
+        ApiErrorCode.INVALID_API_KEY,
+        true
+      );
+      setErrorMessage(error.message);
+      if (onError) {
+        onError(error);
+      }
     }
   }, [loadError, onError]);
 

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import { useAuth } from '@/hooks/useAuth';
-import { LogIn, UserPlus } from 'lucide-react';
+import NavigationLinks from './layout/NavigationLinks';
+import AuthButtons from './layout/AuthButtons';
+import MobileMenu from './layout/MobileMenu';
 
 const Header: React.FC = () => {
-  const { isAuthenticated, logout } = useAuth();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,24 +19,6 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinkStyle = {
-    color: "#1E354B",
-    fontSize: "18px",
-    transition: "all 0.3s ease",
-    transform: "translateY(0)",
-    textDecoration: "none"
-  };
-
-  const navLinkHoverStyle = {
-    color: "#4A90E2",
-    textDecoration: "none",
-    transform: "translateY(-1px)"
-  };
-
-  const isActive = (path: string) => {
-    return location.pathname === path ? 'text-primary fw-semibold' : '';
-  };
 
   const headerStyle = {
     position: 'fixed',
@@ -52,177 +34,24 @@ const Header: React.FC = () => {
     boxShadow: isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : '0 2px 5px rgba(0, 0, 0, 0.05)'
   } as React.CSSProperties;
 
-  const handleLogout = () => {
-    logout();
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   return (
     <>
       <header style={headerStyle}>
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container position-relative">
-            <Link to="/" className="navbar-brand d-flex align-items-center" style={{ maxWidth: '200px' }}>
-              <Logo />
-            </Link>
-            
-            <button
-              className="navbar-toggler d-block d-lg-none border-0 hamburger-menu"
-              type="button"
-              onClick={toggleMenu}
-              aria-label="Toggle navigation"
-              aria-expanded={isMenuOpen}
-            >
-              <span className={`hamburger-menu__icon ${isMenuOpen ? 'active' : ''}`}>
-                <span className="hamburger-menu__line"></span>
-                <span className="hamburger-menu__line"></span>
-                <span className="hamburger-menu__line"></span>
-              </span>
-            </button>
-
-            <div 
-              className={`collapse navbar-collapse d-lg-flex ${isMenuOpen ? 'show' : ''}`} 
-              id="navbarNav"
-            >
+            <Logo />
+            <MobileMenu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+            <div className={`collapse navbar-collapse d-lg-flex${isMenuOpen ? ' show' : ''}`} id="navbarNav">
               <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center w-100">
-                <ul className="navbar-nav d-flex flex-column flex-lg-row justify-content-center flex-grow-1 mb-2 mb-lg-0 w-100 w-lg-auto" style={{ background: isMenuOpen && window.innerWidth < 992 ? 'white' : 'transparent', borderRadius: '8px' }}>
-                  <li className="nav-item mx-lg-2 my-2 my-lg-0">
-                    <Link 
-                      to="/" 
-                      className={`nav-link ${isActive('/')}`}
-                      style={navLinkStyle}
-                      onMouseOver={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                      }}
-                      onMouseOut={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkStyle);
-                      }}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Inicio
-                    </Link>
-                  </li>
-                  <li className="nav-item mx-lg-2 my-2 my-lg-0">
-                    <Link 
-                      to="/refugios" 
-                      className={`nav-link ${isActive('/refugios')}`}
-                      style={navLinkStyle}
-                      onMouseOver={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                      }}
-                      onMouseOut={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkStyle);
-                      }}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Refugios
-                    </Link>
-                  </li>
-                  <li className="nav-item mx-lg-2 my-2 my-lg-0">
-                    <Link 
-                      to="/adoptar" 
-                      className={`nav-link ${isActive('/adoptar')}`}
-                      style={navLinkStyle}
-                      onMouseOver={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                      }}
-                      onMouseOut={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkStyle);
-                      }}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Adoptar
-                    </Link>
-                  </li>
-                  <li className="nav-item mx-lg-2 my-2 my-lg-0">
-                    <Link 
-                      to="/contacto" 
-                      className={`nav-link ${isActive('/contacto')}`}
-                      style={navLinkStyle}
-                      onMouseOver={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                      }}
-                      onMouseOut={(e) => {
-                        Object.assign(e.currentTarget.style, navLinkStyle);
-                      }}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Contacto
-                    </Link>
-                  </li>
-                </ul>
-
-                <ul className="navbar-nav d-flex flex-column flex-lg-row align-items-center mt-2 mt-lg-0">
-                  {isAuthenticated ? (
-                    <>
-                      <li className="nav-item">
-                        <Link 
-                          to="/profile" 
-                          className={`nav-link px-3 ${isActive('/profile')}`}
-                          style={navLinkStyle}
-                          onMouseOver={(e) => {
-                            Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                          }}
-                          onMouseOut={(e) => {
-                            Object.assign(e.currentTarget.style, navLinkStyle);
-                          }}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          Perfil
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <button 
-                          className="btn btn-outline-primary ms-2"
-                          onClick={handleLogout}
-                        >
-                          Cerrar Sesión
-                        </button>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li className="nav-item">
-                        <Link 
-                          to="/login" 
-                          className={`nav-link px-3 ${isActive('/login')}`}
-                          style={navLinkStyle}
-                          onMouseOver={(e) => {
-                            Object.assign(e.currentTarget.style, navLinkHoverStyle);
-                          }}
-                          onMouseOut={(e) => {
-                            Object.assign(e.currentTarget.style, navLinkStyle);
-                          }}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          <div className="d-flex align-items-center">
-                            <LogIn size={20} className="me-2" />
-                          </div>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link 
-                          to="/register" 
-                          className={`nav-link px-3 ${isActive('/register')}`}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          <div className="d-flex align-items-center">
-                            <UserPlus size={20} className="me-2" />
-                          </div>
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                </ul>
+                <NavigationLinks setIsMenuOpen={setIsMenuOpen} />
+                <AuthButtons isAuthenticated={isAuthenticated} setIsMenuOpen={setIsMenuOpen} />
               </div>
             </div>
           </div>
         </nav>
       </header>
-      {/* Spacer to prevent content from going under fixed header */}
       <div className="header-spacer" style={{ 
         height: '72px',
         minHeight: '72px'
