@@ -24,7 +24,7 @@
     "test:ui": "vitest --ui",
     "seed:shelters": "tsx scripts/seedShelters.ts",
     "list:shelters": "tsx scripts/listShelters.ts",
-    "prepare": "husky",
+    "postinstall": "husky",
     "pre-deploy": "npm run lint"
   },
   "lint-staged": {
