@@ -24,7 +24,7 @@
     "test:ui": "vitest --ui",
     "seed:shelters": "tsx scripts/seedShelters.ts",
     "list:shelters": "tsx scripts/listShelters.ts",
-    "postinstall": "husky",
+    "postinstall": "[ \"$NODE_ENV\" != \"production\" ] && husky || echo \"Skipping husky in production\"",
     "pre-deploy": "npm run lint"
   },
   "lint-staged": {
@@ -66,6 +66,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "husky": "^9.1.7",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.488.0",
     "mercadopago": "^2.5.0",
@@ -99,7 +100,6 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
-    "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
     "mongodb-memory-server": "^9.5.0",
     "netlify-cli": "^21.2.1",
