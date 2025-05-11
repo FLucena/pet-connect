@@ -4,6 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from './contexts/AuthContext';
 
+// Import styles
+import './index.css';
+import './styles/mobile.css';
+import './styles/skeleton.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 // Preload critical routes and assets
 const preloadCriticalAssets = () => {
   // Preload critical routes
@@ -18,6 +25,7 @@ const preloadCriticalAssets = () => {
   const styles = [
     '/src/index.css',
     '/src/styles/mobile.css',
+    '/src/styles/skeleton.css',
     '/src/App.css'
   ];
 
@@ -42,24 +50,13 @@ const preloadCriticalAssets = () => {
 // Initialize preloading
 preloadCriticalAssets();
 
-// Styles - Load in parallel
-const stylePromises = [
-  import('./index.css'),
-  import('./styles/mobile.css'),
-  import('bootstrap/dist/css/bootstrap.min.css'),
-  import('bootstrap-icons/font/bootstrap-icons.css')
-];
-
-// Load styles in parallel
-Promise.all(stylePromises).then(() => {
-  // Initialize app after styles are loaded
-  ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </BrowserRouter>
-    </React.StrictMode>,
-  );
-});
+// Initialize app
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+);
