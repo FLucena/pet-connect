@@ -1,21 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Shelter } from '@/services/shelterService';
+import { Shelter } from '@/types/shelter';
 
 type NearbyShelterCardProps = {
   shelter: Shelter;
 };
 
 const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
-  // Format distance to show in km with 1 decimal
-  const formatDistance = (distance?: number) => {
-    if (distance === undefined) return 'Distancia desconocida';
-    if (distance < 1) return `${Math.round(distance * 1000)} metros`;
-    return `${distance.toFixed(1)} km`;
-  };
-
   // Get first photo or placeholder
-  const coverImage = shelter.fotos && shelter.fotos.length > 0
-    ? shelter.fotos[0]
+  const coverImage = shelter.photos && shelter.photos.length > 0
+    ? shelter.photos[0]
     : 'https://via.placeholder.com/800x400?text=Sin+Imagen';
 
   return (
@@ -29,24 +22,25 @@ const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
           backgroundPosition: 'center'
         }}
       >
-        {shelter.distance !== undefined && (
+        {/* Distance is not in Shelter type, so this is commented out unless you add it */}
+        {/* {shelter.distance !== undefined && (
           <div className="position-absolute top-0 end-0 m-2">
             <span className="badge bg-primary rounded-pill py-2 px-3">
               <i className="bi bi-geo-alt me-1"></i>
               {formatDistance(shelter.distance)}
             </span>
           </div>
-        )}
+        )} */}
       </div>
       <div className="card-body">
-        <h5 className="card-title">{shelter.nombre}</h5>
+        <h5 className="card-title">{shelter.name}</h5>
         <p className="card-text text-muted small mb-2">
-          {shelter.direccion.ciudad}, {shelter.direccion.provincia}
+          {shelter.address?.city || shelter.location?.city}, {shelter.address?.province || shelter.location?.state}
         </p>
         <p className="card-text mb-3">
-          {shelter.descripcion.length > 100
-            ? `${shelter.descripcion.substring(0, 100)}...`
-            : shelter.descripcion}
+          {shelter.description.length > 100
+            ? `${shelter.description.substring(0, 100)}...`
+            : shelter.description}
         </p>
         <div className="d-flex align-items-center mb-2">
           <div className="me-2">
@@ -54,9 +48,9 @@ const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
               {Array(5).fill(0).map((_, i) => (
                 <i 
                   key={i} 
-                  className={`bi ${i < Math.floor(shelter.rating) 
+                  className={`bi ${i < Math.floor(shelter.reviews?.rating || 0) 
                     ? 'bi-star-fill' 
-                    : i < shelter.rating 
+                    : i < (shelter.reviews?.rating || 0) 
                       ? 'bi-star-half' 
                       : 'bi-star'}`}
                 ></i>
@@ -64,7 +58,7 @@ const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
             </span>
           </div>
           <span className="text-muted small">
-            {shelter.rating} ({shelter.reseñas} reseñas)
+            {(shelter.reviews?.rating || 0).toFixed(1)} ({shelter.reviews?.count || 0} reseñas)
           </span>
         </div>
       </div>
@@ -73,7 +67,7 @@ const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
           <Link 
             to={`/refugios/${shelter.id}`} 
             className="btn btn-outline-primary"
-            aria-label={`Ver detalles de ${shelter.nombre}`}
+            aria-label={`Ver detalles de ${shelter.name}`}
             tabIndex={0}
           >
             Ver detalles

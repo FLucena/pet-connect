@@ -1,7 +1,7 @@
-import { usePetFilters } from './PetFilters/usePetFilters';
-import PetDesktopFilters from './PetFilters/PetDesktopFilters';
-import PetFiltersModal from './PetFilters/PetMobileFiltersModal';
-import { PetFilterValues } from '../types/pet';
+import { usePetFilters } from '@/components/PetFilters/usePetFilters';
+import PetDesktopFilters from '@/components/PetFilters/PetDesktopFilters';
+import PetFiltersModal from '@/components/PetFilters/PetMobileFiltersModal';
+import { PetFilterValues } from '@/types/pet';
 
 type PetFiltersProps = {
   onFilterChange: (filters: PetFilterValues) => void;
@@ -45,7 +45,6 @@ const PetFilters = ({ onFilterChange, onReset }: PetFiltersProps) => {
           isExpanded={isExpanded}
           toggleFilters={toggleFilters}
           contentRef={contentRef}
-          onFilterChange={onFilterChange}
         />
       </div>
 

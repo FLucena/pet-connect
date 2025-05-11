@@ -26,6 +26,7 @@ export interface Location {
   city: string;
   state: string;
   country: string;
+  postalCode: string;
   coordinates?: {
     latitude: number;
     longitude: number;
@@ -66,6 +67,7 @@ export interface Shelter {
   type: string;
   description: string;
   contact: Contact;
+  address: Address;
   location: Location;
   capacity: Capacity;
   facilities: Facilities;
@@ -76,6 +78,21 @@ export interface Shelter {
   status: 'active' | 'inactive';
   registrationDate: string;
   lastUpdate: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
+  openingHours?: Record<string, string>;
+  adoptionRequirements?: string[];
+  statistics?: {
+    successfulAdoptions: number;
+    rescuedAnimals: number;
+    sterilizedAnimals: number;
+  };
+  reviews?: {
+    rating: number;
+    count: number;
+  };
 }
 
 export interface SheltersData {

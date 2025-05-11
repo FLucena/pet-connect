@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { PetFilterValues } from '@/types/pet';
 
 export const initialFilters: PetFilterValues = {
-  tipo: '',
-  sexo: '',
-  edad: '',
-  raza: '',
-  tamaño: '',
-  estado: 'disponible',
+  type: '',
+  sex: '',
+  age: '',
+  breed: '',
+  size: '',
+  status: 'disponible',
   searchTerm: '',
 };
 

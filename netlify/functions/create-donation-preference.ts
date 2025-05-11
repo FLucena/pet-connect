@@ -5,6 +5,12 @@ const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN! 
 });
 
+// Validate required environment variables
+const SITE_URL = process.env.SITE_URL;
+if (!SITE_URL) {
+  throw new Error('SITE_URL environment variable is required');
+}
+
 const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -25,12 +31,12 @@ const handler: Handler = async (event) => {
           }
         ],
         back_urls: {
-          success: `${process.env.URL}/donation/success`,
-          failure: `${process.env.URL}/donation/failure`,
-          pending: `${process.env.URL}/donation/pending`,
+          success: `${SITE_URL}/donation/success`,
+          failure: `${SITE_URL}/donation/failure`,
+          pending: `${SITE_URL}/donation/pending`,
         },
         auto_return: 'approved',
-        notification_url: `${process.env.URL}/.netlify/functions/donation-webhook`,
+        notification_url: `${SITE_URL}/.netlify/functions/donation-webhook`,
         metadata: {
           shelterId,
           shelterName,
