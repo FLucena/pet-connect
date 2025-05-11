@@ -1,10 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Running type checks..."
-npm run type-check:strict
-
-echo "🧹 Running linter..."
-npm run lint
-
-echo "✅ All checks passed!"
+npx lint-staged
