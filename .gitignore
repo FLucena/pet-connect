@@ -5,6 +5,10 @@
 
 # testing
 /coverage
+/.vitest
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
 # production
 /build
@@ -49,3 +53,15 @@ dist-ssr
 src/scripts/
 # Local Netlify folder
 .netlify
+
+# TypeScript
+*.tsbuildinfo
+.tsbuildinfo
+
+# Test files
+**/*.test.ts.snap
+**/*.test.tsx.snap
+**/*.spec.ts.snap
+**/*.spec.tsx.snap
+
+scripts/

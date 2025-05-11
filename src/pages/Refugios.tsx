@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import sheltersData from '@/data/shelters.json';
 import ShelterCard from '@/components/ui/cards/ShelterCard';
 import ShelterRegistrationModal from '@/components/features/shelter/ShelterRegistrationModal.tsx';
 import { NewShelterFormData, SheltersData, Shelter } from '@/types/shelter';
 
 const Shelters: React.FC = () => {
-  const { shelters } = sheltersData as SheltersData;
+  
+  const mockShelters = (sheltersData as unknown as SheltersData).shelters;
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [shelters, setShelters] = useState<Shelter[]>([]);
+  const [useMockData, setUseMockData] = useState(true); // Always start with mock data
+  const [isLoadingShelters, setIsLoadingShelters] = useState(false);
+
+  useEffect(() => {
+    const fetchShelters = async () => {  
+      if (useMockData) {
+        setShelters(mockShelters);
+        return;
+      }
+
+      try {
+        setIsLoadingShelters(true);
+        const response = await fetch('/api/shelters');
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('API Error response:', errorText);
+          throw new Error(`Failed to fetch shelters: ${response.status} ${errorText}`);
+        }
+        
+        const data = await response.json();
+        setShelters(data);
+      } catch (err) {
+        console.error('Error fetching shelters:', err);
+        setError('Error al cargar los refugios. Por favor, inténtalo de nuevo.');
+      } finally {
+        setIsLoadingShelters(false);
+      }
+    };
+
+    fetchShelters();
+  }, [useMockData, mockShelters]);
+
+  const handleToggleMockData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUseMockData(e.target.checked);
+  };
 
   const handleCreateRefugio = () => {
     setError(null);
@@ -25,11 +63,21 @@ const Shelters: React.FC = () => {
       setIsLoading(true);
       setError(null);
       
-      // TODO: Replace with actual API call
-      console.log('New shelter data:', data);
+      const response = await fetch('/api/shelters', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to create shelter');
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Refresh shelters list
+      const updatedResponse = await fetch('/api/shelters');
+      if (!updatedResponse.ok) throw new Error('Failed to fetch updated shelters');
+      const updatedData = await updatedResponse.json();
+      setShelters(updatedData);
       
       setShowForm(false);
     } catch (err) {
@@ -51,6 +99,20 @@ const Shelters: React.FC = () => {
             </p>
           </div>
           <div className="col-md-4 text-md-end mt-3 mt-md-0">
+            {import.meta.env.MODE === 'development' && (
+              <div className="form-check form-switch mb-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="useMockData"
+                  checked={useMockData}
+                  onChange={handleToggleMockData}
+                />
+                <label className="form-check-label" htmlFor="useMockData">
+                  {useMockData ? 'Datos de Prueba' : 'Base de Datos'}
+                </label>
+              </div>
+            )}
             <button
               onClick={handleCreateRefugio}
               className="btn btn-primary btn-lg"
@@ -74,13 +136,21 @@ const Shelters: React.FC = () => {
           isLoading={isLoading}
         />
 
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {shelters.map((shelter: Shelter) => (
-            <div key={shelter.id} className="col">
-              <ShelterCard shelter={shelter} />
+        {isLoadingShelters ? (
+          <div className="text-center py-5">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Cargando...</span>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {shelters.map((shelter: Shelter) => (
+              <div key={shelter.id} className="col">
+                <ShelterCard shelter={shelter} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

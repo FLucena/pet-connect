@@ -8,6 +8,15 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  NODE_OPTIONS = "--no-deprecation"
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+  command = "npm run dev"
+  autoLaunch = true
 
 # Redirect all URL paths to index.html for client-side routing
 [[redirects]]
