@@ -17,7 +17,8 @@ const Login: React.FC = () => {
       await login();
       navigate('/');
     } catch (err) {
-      setError('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+      const errorMessage = err instanceof Error ? err.message : 'Error al iniciar sesión. Por favor, inténtalo de nuevo.';
+      setError(errorMessage);
     }
   };
 

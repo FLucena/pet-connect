@@ -29,8 +29,8 @@ declare global {
   namespace NodeJS {
     interface Global {
       clearDatabase: () => Promise<void>;
-      createMockEvent: (method: string, path: string, body?: any, pathParameters?: any) => MockEvent;
-      parseResponseBody: (response: MockResponse) => any;
+      createMockEvent: (method: string, path: string, body?: string, pathParameters?: Record<string, string>) => MockEvent;
+      parseResponseBody: (response: MockResponse) => unknown;
     }
   }
 } 

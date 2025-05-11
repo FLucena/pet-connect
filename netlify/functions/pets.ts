@@ -5,6 +5,16 @@ import Pet from '../../src/models/Pet';
 const handler: Handler = async (event) => {
   await connectDB();
 
+  let petData;
+  let count;
+  let id;
+  let newPet;
+  let updateId;
+  let updateData;
+  let updatedPet;
+  let deleteId;
+  let pets;
+
   switch (event.httpMethod) {
     case 'GET':
       if (event.queryStringParameters?.id) {
@@ -14,18 +24,18 @@ const handler: Handler = async (event) => {
           body: JSON.stringify(pet)
         };
       }
-      const pets = await Pet.find({});
+      pets = await Pet.find({});
       return {
         statusCode: 200,
         body: JSON.stringify(pets)
       };
 
     case 'POST':
-      const petData = JSON.parse(event.body!);
-      const count = await Pet.countDocuments();
-      const id = `M${String(count + 1).padStart(3, '0')}`;
+      petData = JSON.parse(event.body!);
+      count = await Pet.countDocuments();
+      id = `M${String(count + 1).padStart(3, '0')}`;
       
-      const newPet = new Pet({
+      newPet = new Pet({
         ...petData,
         id,
         registrationDate: new Date().toISOString(),
@@ -39,8 +49,8 @@ const handler: Handler = async (event) => {
       };
 
     case 'PUT':
-      const { id: updateId, ...updateData } = JSON.parse(event.body!);
-      const updatedPet = await Pet.findOneAndUpdate(
+      ({ id: updateId, ...updateData } = JSON.parse(event.body!));
+      updatedPet = await Pet.findOneAndUpdate(
         { id: updateId },
         { ...updateData, lastUpdate: new Date().toISOString() },
         { new: true }
@@ -51,7 +61,7 @@ const handler: Handler = async (event) => {
       };
 
     case 'DELETE':
-      const { id: deleteId } = JSON.parse(event.body!);
+      ({ id: deleteId } = JSON.parse(event.body!));
       await Pet.findOneAndDelete({ id: deleteId });
       return {
         statusCode: 204
