@@ -15,13 +15,18 @@ interface ShelterRegistrationFormProps {
 
 const schema = yup.object().shape({
   name: yup.string().required('El nombre es requerido'),
+  type: yup.string().required('El tipo es requerido'),
   description: yup.string().required('La descripción es requerida'),
-  address: yup.object().shape({
-    street: yup.string().required('La calle es requerida'),
+  location: yup.object().shape({
+    address: yup.string().required('La calle es requerida'),
     city: yup.string().required('La ciudad es requerida'),
-    province: yup.string().required('La provincia es requerida'),
+    state: yup.string().required('La provincia es requerida'),
     postalCode: yup.string().required('El código postal es requerido'),
     country: yup.string().default('Argentina'),
+    coordinates: yup.object().shape({
+      latitude: yup.number().optional(),
+      longitude: yup.number().optional(),
+    }).optional(),
   }),
   contact: yup.object().shape({
     phone: yup.string().required('El teléfono es requerido'),
@@ -33,20 +38,47 @@ const schema = yup.object().shape({
       twitter: yup.string().url('La URL no es válida').optional(),
     }),
   }),
+  capacity: yup.object().shape({
+    total: yup.number().required(),
+    current: yup.number().required(),
+    available: yup.number().required(),
+  }),
+  facilities: yup.object().shape({
+    indoor: yup.boolean().required(),
+    outdoor: yup.boolean().required(),
+    medical: yup.boolean().required(),
+    training: yup.boolean().required(),
+    description: yup.string().optional(),
+  }),
+  staff: yup.object().shape({
+    total: yup.number().required(),
+    volunteers: yup.number().required(),
+    roles: yup.array().of(yup.string()).required(),
+  }),
+  animals: yup.object().shape({
+    total: yup.number().required(),
+    byType: yup.object().shape({
+      perros: yup.number().required(),
+      gatos: yup.number().required(),
+    }).required(),
+  }),
   services: yup.array().of(yup.string()).default([]),
-  adoptionRequirements: yup.array().of(yup.string()).default([]),
-  openingHours: yup.object().default({}),
 }) as yup.ObjectSchema<NewShelterFormData>;
 
 const defaultValues: NewShelterFormData = {
   name: '',
+  type: '',
   description: '',
-  address: {
-    street: '',
+  location: {
+    address: '',
     city: '',
-    province: '',
+    state: '',
     postalCode: '',
     country: 'Argentina',
+    coordinates: {
+      latitude: 0,
+      longitude: 0,
+    },
   },
   contact: {
     phone: '',
@@ -58,9 +90,11 @@ const defaultValues: NewShelterFormData = {
       twitter: '',
     },
   },
+  capacity: { total: 0, current: 0, available: 0 },
+  facilities: { indoor: false, outdoor: false, medical: false, training: false, description: '' },
+  staff: { total: 0, volunteers: 0, roles: [] },
+  animals: { total: 0, byType: { perros: 0, gatos: 0 } },
   services: [],
-  adoptionRequirements: [],
-  openingHours: {},
 };
 
 const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
@@ -171,8 +205,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="Calle"
                         type="text"
                         register={register}
-                        name="address.street"
-                        error={errors.address?.street?.message}
+                        name="location.address"
+                        error={errors.location?.address?.message}
                         required
                       />
                     </div>
@@ -181,8 +215,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="Ciudad"
                         type="text"
                         register={register}
-                        name="address.city"
-                        error={errors.address?.city?.message}
+                        name="location.city"
+                        error={errors.location?.city?.message}
                         required
                       />
                     </div>
@@ -191,8 +225,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="Provincia"
                         type="text"
                         register={register}
-                        name="address.province"
-                        error={errors.address?.province?.message}
+                        name="location.state"
+                        error={errors.location?.state?.message}
                         required
                       />
                     </div>
@@ -201,8 +235,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="Código Postal"
                         type="text"
                         register={register}
-                        name="address.postalCode"
-                        error={errors.address?.postalCode?.message}
+                        name="location.postalCode"
+                        error={errors.location?.postalCode?.message}
                         required
                       />
                     </div>
@@ -211,8 +245,9 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
                         label="País"
                         type="text"
                         register={register}
-                        name="address.country"
-                        error={errors.address?.country?.message}
+                        name="location.country"
+                        error={errors.location?.country?.message}
+                        required
                       />
                     </div>
                   </div>

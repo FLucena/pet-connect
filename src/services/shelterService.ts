@@ -4,7 +4,7 @@ import { Shelter, SheltersData } from '@/types/shelter';
 
 // Service functions
 export const getShelters = (): Shelter[] => {
-  return (sheltersData as SheltersData).shelters;
+  return ((sheltersData as unknown) as SheltersData).shelters;
 };
 
 export const getShelterById = (id: string): Shelter | undefined => {

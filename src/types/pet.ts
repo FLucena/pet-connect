@@ -87,6 +87,13 @@ export interface PetFilterValues {
   breed: string;
   status: Status | '';
   searchTerm: string; // UI only
+  // Spanish property names for compatibility
+  tipo?: PetType | '';
+  edad?: AgeCategory | '';
+  tamaño?: Size | '';
+  sexo?: Sex | '';
+  raza?: string;
+  estado?: Status | '';
 }
 
 // Backend/API filter type (used for API calls, etc.)
