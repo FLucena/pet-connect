@@ -3,23 +3,38 @@
     {
       "id": "1",
       "name": "Refugio de Animales San Francisco",
+      "type": "refugio",
       "description": "Un refugio dedicado al cuidado y protección de animales abandonados.",
-      "status": "active",
-      "address": {
-        "street": "Av. San Martín 1234",
-        "city": "Córdoba",
-        "province": "Córdoba",
-        "postalCode": "5000",
-        "country": "Argentina"
-      },
       "contact": {
-        "phone": "+54 351 123-4567",
         "email": "contacto@refugiosanfrancisco.com",
+        "phone": "+54 351 123-4567",
         "website": "https://refugiosanfrancisco.com",
         "socialMedia": {
           "facebook": "https://facebook.com/refugiosanfrancisco",
           "instagram": "https://instagram.com/refugiosanfrancisco"
         }
+      },
+      "location": {
+        "address": "Av. San Martín 1234",
+        "city": "Córdoba",
+        "state": "Córdoba",
+        "country": "Argentina",
+        "coordinates": {
+          "latitude": -31.4201,
+          "longitude": -64.1888
+        }
+      },
+      "capacity": {
+        "total": 100,
+        "current": 50,
+        "available": 50
+      },
+      "facilities": {
+        "indoor": true,
+        "outdoor": true,
+        "medical": true,
+        "training": true,
+        "description": "Área de cuarentena, Clínica veterinaria, Patio de juegos"
       },
       "services": [
         "Adopción de mascotas",
@@ -27,57 +42,35 @@
         "Vacunación",
         "Cuidado temporal"
       ],
-      "statistics": {
-        "successfulAdoptions": 150,
-        "rescuedAnimals": 300,
-        "sterilizedAnimals": 200
+      "staff": {
+        "total": 15,
+        "volunteers": 10,
+        "roles": ["veterinario", "cuidador", "voluntario"]
       },
-      "coordinates": {
-        "lat": -31.4201,
-        "lng": -64.1888
-      },
-      "adoptionRequirements": [
-        "Documento de identidad",
-        "Comprobante de domicilio",
-        "Entrevista previa",
-        "Firma de contrato de adopción"
-      ],
-      "openingHours": {
-        "monday": "09:00-18:00",
-        "tuesday": "09:00-18:00",
-        "wednesday": "09:00-18:00",
-        "thursday": "09:00-18:00",
-        "friday": "09:00-18:00",
-        "saturday": "10:00-14:00",
-        "sunday": "Cerrado"
-      },
-      "createdAt": "2023-01-01T00:00:00Z",
-      "updatedAt": "2023-12-31T00:00:00Z",
-      "reviews": {
-        "rating": 4.8,
-        "count": 156
+      "animals": {
+        "total": 50,
+        "byType": {
+          "perros": 30,
+          "gatos": 20
+        }
       },
       "photos": [
         "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&auto=format&fit=crop&q=60",
         "https://images.unsplash.com/photo-1601979031925-42453c73fcd6?w=800&auto=format&fit=crop&q=60",
         "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=800&auto=format&fit=crop&q=60"
-      ]
+      ],
+      "status": "active",
+      "registrationDate": "2023-01-01T00:00:00Z",
+      "lastUpdate": "2023-12-31T00:00:00Z"
     },
     {
-      "id": "R002",
+      "id": "2",
       "name": "Hogar de Mascotas",
+      "type": "refugio",
       "description": "Centro de rescate especializado en perros y gatos, con programas de rehabilitación y socialización.",
-      "status": "active",
-      "address": {
-        "street": "Calle San Martín 567",
-        "city": "Córdoba",
-        "province": "Córdoba",
-        "postalCode": "X5000",
-        "country": "Argentina"
-      },
       "contact": {
-        "phone": "+54 351 987-6543",
         "email": "contacto@hogardemascotas.com",
+        "phone": "+54 351 987-6543",
         "website": "www.hogardemascotas.com",
         "socialMedia": {
           "facebook": "hogardemascotas",
@@ -85,18 +78,27 @@
           "twitter": "@hogardemascotas"
         }
       },
-      "openingHours": {
-        "monday": "09:00 - 17:00",
-        "tuesday": "09:00 - 17:00",
-        "wednesday": "09:00 - 17:00",
-        "thursday": "09:00 - 17:00",
-        "friday": "09:00 - 17:00",
-        "saturday": "10:00 - 13:00",
-        "sunday": "Cerrado"
+      "location": {
+        "address": "Calle San Martín 567",
+        "city": "Córdoba",
+        "state": "Córdoba",
+        "country": "Argentina",
+        "coordinates": {
+          "latitude": -31.4201,
+          "longitude": -64.1888
+        }
       },
       "capacity": {
-        "max": 40,
-        "current": 28
+        "total": 40,
+        "current": 28,
+        "available": 12
+      },
+      "facilities": {
+        "indoor": true,
+        "outdoor": true,
+        "medical": true,
+        "training": true,
+        "description": "Área de rehabilitación, Clínica veterinaria, Patio de juegos"
       },
       "services": [
         "Adopción",
@@ -106,30 +108,26 @@
         "Cuidado temporal",
         "Rehabilitación"
       ],
-      "adoptionRequirements": [
-        "Mayor de 18 años",
-        "Documento de identidad",
-        "Comprobante de domicilio",
-        "Entrevista previa",
-        "Firma de contrato de adopción",
-        "Visita domiciliaria"
-      ],
-      "statistics": {
-        "successfulAdoptions": 850,
-        "rescuedAnimals": 1500,
-        "sterilizedAnimals": 2000
+      "staff": {
+        "total": 12,
+        "volunteers": 8,
+        "roles": ["veterinario", "cuidador", "voluntario"]
+      },
+      "animals": {
+        "total": 28,
+        "byType": {
+          "perros": 18,
+          "gatos": 10
+        }
       },
       "photos": [
         "https://images.unsplash.com/photo-1544568100-847a948585b9?w=800&auto=format&fit=crop&q=60",
         "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&auto=format&fit=crop&q=60",
         "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=60"
       ],
-      "reviews": {
-        "rating": 4.6,
-        "count": 98
-      },
-      "createdAt": "2018-07-22",
-      "updatedAt": "2018-07-22"
+      "status": "active",
+      "registrationDate": "2018-07-22T00:00:00Z",
+      "lastUpdate": "2023-12-31T00:00:00Z"
     },
     {
       "id": "R003",

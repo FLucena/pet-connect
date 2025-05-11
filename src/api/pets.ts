@@ -1,72 +1,118 @@
-import { connectToDatabase } from '../lib/db';
+import Pet from '../models/Pet';
 
 interface PhysicalCharacteristics {
-  tamaño: "pequeño" | "mediano" | "grande";
-  peso: number;
-  color: string;
+  coat: string;
+  ears?: string;
+  tail?: string;
+  pattern?: string;
+  specialMarks?: string[];
 }
 
 interface Health {
-  vacunas?: string[];
-  enfermedades?: string[];
-  alergias?: string[];
-  medicamentos?: string[];
+  status: string;
+  vaccines?: string[];
+  lastVaccine?: string;
+  sterilized: boolean;
+  sterilizationDate?: string;
+  microchip: boolean;
+  microchipNumber?: string;
+  specialConditions?: string[];
+  allergies?: string[];
+  medications?: string[];
 }
 
 interface Behavior {
-  temperamento?: string;
-  sociabilidad?: string;
-  entrenamiento?: string[];
-  necesidadesEspeciales?: string[];
+  energy: string;
+  sociability: string;
+  training: string;
+  goodWithChildren: boolean;
+  goodWithDogs: boolean;
+  goodWithCats: boolean;
+  character?: string[];
+  specialNeeds?: string[];
 }
 
 interface PetAge {
-  años?: number;
-  meses?: number;
+  years: number;
+  months: number;
 }
 
-interface Pet {
+interface PetType {
   id: string;
-  tipo: string;
-  nombre: string;
-  raza: string;
-  edad: PetAge;
-  sexo: "macho" | "hembra";
-  tamaño: "pequeño" | "mediano" | "grande";
-  peso: number;
+  type: string;
+  name: string;
+  breed: string;
+  age: PetAge;
+  sex: string;
+  size: string;
+  weight: number;
   color: string;
-  caracteristicasFisicas: PhysicalCharacteristics;
-  salud: Health;
-  comportamiento: Behavior;
-  createdAt?: Date;
-  userId?: string;
+  physicalCharacteristics: PhysicalCharacteristics;
+  health: Health;
+  behavior: Behavior;
+  history: {
+    origin: string;
+    rescueDate: string;
+    rescueCircumstances?: string;
+    medicalHistory?: string;
+    specialNotes?: string;
+  };
+  care: {
+    feeding: string;
+    exercise: string;
+    grooming: string;
+    specialNeeds?: string[];
+  };
+  relationships: {
+    currentShelter: string;
+    shelterEntryDate: string;
+    currentAdopter?: string;
+    adoptionDate?: string;
+    previousAdopters?: {
+      id: string;
+      adoptionDate: string;
+      returnDate: string;
+      reason: string;
+    }[];
+    currentFoster?: string;
+    previousFosters?: string[];
+  };
+  photos?: string[];
+  status: string;
+  registrationDate: string;
+  lastUpdate: string;
 }
 
 // API Route Handlers
 export async function GET(request: Request) {
   try {
-    console.log('GET /api/pets');
-    const url = new URL(request.url);
-    const id = url.searchParams.get('id');
-    
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
     if (id) {
       const pet = await getPetById(id);
+      if (!pet) {
+        return new Response(JSON.stringify({ error: 'Pet not found' }), {
+          status: 404,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
       return new Response(JSON.stringify(pet), {
-        headers: { 'Content-Type': 'application/json' },
         status: 200,
+        headers: { 'Content-Type': 'application/json' }
       });
     }
 
     const pets = await getPets();
     return new Response(JSON.stringify(pets), {
-      headers: { 'Content-Type': 'application/json' },
       status: 200,
+      headers: { 'Content-Type': 'application/json' }
     });
-  } catch (err) {
-    console.error('Error in GET /api/pets:', err);
-    return new Response(JSON.stringify({ error: 'Failed to fetch pets' }), {
-      headers: { 'Content-Type': 'application/json' },
+  } catch (error) {
+    console.error('Error fetching pets:', error);
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
+      headers: { 'Content-Type': 'application/json' }
     });
   }
 }
@@ -74,12 +120,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const petData = await request.json();
-    // Generate a unique ID with format "M001", "M002", etc.
-    const { db } = await connectToDatabase();
-    const count = await db.collection('pets').countDocuments();
-    const id = `M${String(count + 1).padStart(3, '0')}`;
-    
-    const result = await createPet({ ...petData, id });
+    const result = await createPet(petData);
     return new Response(JSON.stringify(result), {
       headers: { 'Content-Type': 'application/json' },
       status: 201,
@@ -148,8 +189,7 @@ export async function DELETE(request: Request) {
 
 export async function getPets() {
   try {
-    const { db } = await connectToDatabase();
-    const pets = await db.collection('pets').find({}).toArray();
+    const pets = await Pet.find({});
     return pets;
   } catch (error) {
     console.error('Error fetching pets:', error);
@@ -157,14 +197,10 @@ export async function getPets() {
   }
 }
 
-export async function createPet(petData: Pet) {
+export async function createPet(petData: PetType) {
   try {
-    const { db } = await connectToDatabase();
-    const result = await db.collection('pets').insertOne({
-      ...petData,
-      createdAt: new Date()
-    });
-    return result;
+    const pet = await Pet.create(petData);
+    return pet;
   } catch (error) {
     console.error('Error creating pet:', error);
     throw error;
@@ -173,29 +209,25 @@ export async function createPet(petData: Pet) {
 
 export async function getPetById(id: string) {
   try {
-    const { db } = await connectToDatabase();
-    const pet = await db.collection('pets').findOne({ id });
-    if (!pet) {
-      throw new Error('Pet not found');
-    }
+    const pet = await Pet.findOne({ id });
     return pet;
   } catch (error) {
-    console.error('Error fetching pet:', error);
+    console.error('Error fetching pet by id:', error);
     throw error;
   }
 }
 
-export async function updatePet(id: string, petData: Partial<Pet>) {
+export async function updatePet(id: string, petData: Partial<PetType>) {
   try {
-    const { db } = await connectToDatabase();
-    const result = await db.collection('pets').updateOne(
+    const pet = await Pet.findOneAndUpdate(
       { id },
-      { $set: petData }
+      petData,
+      { new: true }
     );
-    if (result.matchedCount === 0) {
+    if (!pet) {
       throw new Error('Pet not found');
     }
-    return result;
+    return pet;
   } catch (error) {
     console.error('Error updating pet:', error);
     throw error;
@@ -204,12 +236,11 @@ export async function updatePet(id: string, petData: Partial<Pet>) {
 
 export async function deletePet(id: string) {
   try {
-    const { db } = await connectToDatabase();
-    const result = await db.collection('pets').deleteOne({ id });
-    if (result.deletedCount === 0) {
+    const pet = await Pet.findOneAndDelete({ id });
+    if (!pet) {
       throw new Error('Pet not found');
     }
-    return result;
+    return pet;
   } catch (error) {
     console.error('Error deleting pet:', error);
     throw error;
@@ -217,44 +248,43 @@ export async function deletePet(id: string) {
 }
 
 export async function searchPets(query: {
-  nombre?: string;
-  tipo?: string;
-  raza?: string;
-  sexo?: "macho" | "hembra";
-  tamaño?: "pequeño" | "mediano" | "grande";
+  name?: string;
+  type?: string;
+  breed?: string;
+  sex?: string;
+  size?: string;
   userId?: string;
 }) {
   try {
-    const { db } = await connectToDatabase();
     const filter: {
-      nombre?: { $regex: string; $options: string };
-      tipo?: string;
-      raza?: string;
-      sexo?: "macho" | "hembra";
-      tamaño?: "pequeño" | "mediano" | "grande";
+      name?: { $regex: string; $options: string };
+      type?: string;
+      breed?: string;
+      sex?: string;
+      size?: string;
       userId?: string;
     } = {};
     
-    if (query.nombre) {
-      filter.nombre = { $regex: query.nombre, $options: 'i' };
+    if (query.name) {
+      filter.name = { $regex: query.name, $options: 'i' };
     }
-    if (query.tipo) {
-      filter.tipo = query.tipo;
+    if (query.type) {
+      filter.type = query.type;
     }
-    if (query.raza) {
-      filter.raza = query.raza;
+    if (query.breed) {
+      filter.breed = query.breed;
     }
-    if (query.sexo) {
-      filter.sexo = query.sexo;
+    if (query.sex) {
+      filter.sex = query.sex;
     }
-    if (query.tamaño) {
-      filter.tamaño = query.tamaño;
+    if (query.size) {
+      filter.size = query.size;
     }
     if (query.userId) {
       filter.userId = query.userId;
     }
-
-    const pets = await db.collection('pets').find(filter).toArray();
+    
+    const pets = await Pet.find(filter);
     return pets;
   } catch (error) {
     console.error('Error searching pets:', error);
@@ -264,8 +294,7 @@ export async function searchPets(query: {
 
 export async function getPetsByUser(userId: string) {
   try {
-    const { db } = await connectToDatabase();
-    const pets = await db.collection('pets').find({ userId }).toArray();
+    const pets = await Pet.find({ userId });
     return pets;
   } catch (error) {
     console.error('Error fetching user pets:', error);
