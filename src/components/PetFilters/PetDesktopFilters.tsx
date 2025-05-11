@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { PetFilterValues } from '@/types/pet';
 
 type PetDesktopFiltersProps = {
@@ -8,7 +8,7 @@ type PetDesktopFiltersProps = {
   filtersModified: boolean;
   isExpanded: boolean;
   toggleFilters: () => void;
-  contentRef: RefObject<HTMLDivElement | null>;
+  contentRef: React.RefObject<HTMLDivElement>;
 };
 
 const PetDesktopFilters: React.FC<PetDesktopFiltersProps> = ({

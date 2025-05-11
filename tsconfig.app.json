@@ -37,7 +37,12 @@
 
     /* Output Configuration */
     "outDir": "./dist",
-    "rootDir": "."
+    "rootDir": ".",
+
+    /* React Configuration */
+    "types": ["react", "react-dom"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
