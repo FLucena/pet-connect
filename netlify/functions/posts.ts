@@ -2,6 +2,28 @@ import { Handler } from '@netlify/functions';
 import connectDB from '../../src/lib/mongodb';
 import Post from '../../src/models/Post';
 
+interface PostQuery {
+  type?: string;
+  status?: string;
+  'author.id'?: string;
+  tags?: { $in: string[] };
+}
+
+interface PostUpdate {
+  title?: string;
+  content?: string;
+  type?: string;
+  status?: string;
+  tags?: string[];
+  author?: {
+    id: string;
+    name: string;
+    type: string;
+  };
+  publishedAt?: string;
+  updatedAt: string;
+}
+
 const handler: Handler = async (event) => {
   await connectDB();
 
@@ -16,7 +38,7 @@ const handler: Handler = async (event) => {
       }
 
       // Handle filters
-      const query: Record<string, any> = {};
+      const query: PostQuery = {};
       
       if (event.queryStringParameters?.type) {
         query.type = event.queryStringParameters.type;
@@ -68,7 +90,7 @@ const handler: Handler = async (event) => {
 
     case 'PUT': {
       const { id: updateId, ...updateData } = JSON.parse(event.body!);
-      const update: Record<string, any> = {
+      const update: PostUpdate = {
         ...updateData,
         updatedAt: new Date().toISOString()
       };
