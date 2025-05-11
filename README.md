@@ -10,6 +10,15 @@ Una aplicación web moderna construida con React, TypeScript y Vite que conecta 
 - 📱 Diseño completamente responsive
 - 🔍 Desarrollo con seguridad de tipos usando TypeScript
 - 🧹 Código limpio con configuración ESLint
+- 🔐 Sistema de autenticación y autorización
+- 🗺️ Integración de mapas para ubicación de refugios
+- 📝 Formularios avanzados con validación
+- 💰 Sistema de donaciones integrado
+- 🏠 Gestión de refugios y mascotas
+- 🐾 Proceso de adopción completo
+- 📊 Dashboard de donaciones
+- 🔄 Carga perezosa (lazy loading) de componentes
+- 🎯 Optimización de rendimiento con preload de rutas críticas
 
 ## Tecnologías
 
@@ -19,6 +28,10 @@ Una aplicación web moderna construida con React, TypeScript y Vite que conecta 
 - **Estilos:** Bootstrap 5
 - **Calidad de Código:** ESLint
 - **Gestor de Paquetes:** npm
+- **Formularios:** React Hook Form con Zod
+- **Mapas:** Google Maps API
+- **Iconos:** Lucide React
+- **Estado Global:** React Context API
 
 ## Colaboradores
 
@@ -68,13 +81,22 @@ La aplicación estará disponible en `http://localhost:5173`
 pet-connect/
 ├── src/
 │   ├── assets/         # Recursos estáticos
-│   ├── App.tsx         # Componente principal de la aplicación
-│   ├── main.tsx        # Punto de entrada de la aplicación
-│   ├── index.css       # Estilos globales
-│   └── App.css         # Estilos específicos del componente
+│   ├── components/     # Componentes reutilizables
+│   │   ├── features/   # Componentes específicos por funcionalidad
+│   │   ├── layout/     # Componentes de estructura
+│   │   └── ui/         # Componentes de interfaz
+│   ├── contexts/       # Contextos de React
+│   ├── hooks/          # Hooks personalizados
+│   ├── pages/          # Páginas de la aplicación
+│   ├── styles/         # Estilos globales y específicos
+│   ├── types/          # Definiciones de tipos TypeScript
+│   ├── utils/          # Utilidades y helpers
+│   ├── App.tsx         # Componente principal
+│   ├── main.tsx        # Punto de entrada
+│   └── vite-env.d.ts   # Tipos de Vite
 ├── public/             # Recursos públicos
 ├── vite.config.ts      # Configuración de Vite
-└── package.json        # Dependencias y scripts del proyecto
+└── package.json        # Dependencias y scripts
 ```
 
 ## Contribución
