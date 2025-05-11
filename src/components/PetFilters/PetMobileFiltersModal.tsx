@@ -31,12 +31,12 @@ const PetFiltersModal: React.FC<PetFiltersModalProps> = ({
         </div>
         <div className="modal-body">
           <div className="d-flex flex-column gap-3">
-            <FilterField label="Tipo de mascota" id="tipo">
+            <FilterField label="Tipo de mascota" id="type">
               <select
                 className="form-select"
-                id="tipo"
-                name="tipo"
-                value={petFilters.tipo}
+                id="type"
+                name="type"
+                value={petFilters.type}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por tipo de mascota"
               >
@@ -60,24 +60,24 @@ const PetFiltersModal: React.FC<PetFiltersModalProps> = ({
                 aria-label="Buscar mascotas"
               />
             </FilterField>
-            <FilterField label="Raza" id="raza">
+            <FilterField label="Raza" id="breed">
               <input
                 type="text"
                 className="form-control"
-                id="raza"
-                name="raza"
+                id="breed"
+                name="breed"
                 placeholder="Todas las razas"
-                value={petFilters.raza}
+                value={petFilters.breed}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por raza"
               />
             </FilterField>
-            <FilterField label="Sexo" id="sexo">
+            <FilterField label="Sexo" id="sex">
               <select
                 className="form-select"
-                id="sexo"
-                name="sexo"
-                value={petFilters.sexo}
+                id="sex"
+                name="sex"
+                value={petFilters.sex}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por sexo"
               >
@@ -86,12 +86,12 @@ const PetFiltersModal: React.FC<PetFiltersModalProps> = ({
                 <option value="hembra">Hembra</option>
               </select>
             </FilterField>
-            <FilterField label="Edad" id="edad">
+            <FilterField label="Edad" id="age">
               <select
                 className="form-select"
-                id="edad"
-                name="edad"
-                value={petFilters.edad}
+                id="age"
+                name="age"
+                value={petFilters.age}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por edad"
               >
@@ -102,12 +102,12 @@ const PetFiltersModal: React.FC<PetFiltersModalProps> = ({
                 <option value="senior">Senior (8+ años)</option>
               </select>
             </FilterField>
-            <FilterField label="Tamaño" id="tamaño">
+            <FilterField label="Tamaño" id="size">
               <select
                 className="form-select"
-                id="tamaño"
-                name="tamaño"
-                value={petFilters.tamaño}
+                id="size"
+                name="size"
+                value={petFilters.size}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por tamaño"
               >
@@ -118,12 +118,12 @@ const PetFiltersModal: React.FC<PetFiltersModalProps> = ({
                 <option value="muy-grande">Muy grande</option>
               </select>
             </FilterField>
-            <FilterField label="Estado" id="estado">
+            <FilterField label="Estado" id="status">
               <select
                 className="form-select"
-                id="estado"
-                name="estado"
-                value={petFilters.estado}
+                id="status"
+                name="status"
+                value={petFilters.status}
                 onChange={onPetFilterChange}
                 aria-label="Filtrar por estado"
               >
