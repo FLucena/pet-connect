@@ -1,11 +1,28 @@
-import { FormProvider } from "react-hook-form";
-import { FormItem, FormLabel, FormControl, FormMessage, FormField } from "./Form";
-
-export const FormComponents = {
-  Form: FormProvider,
+import { 
+  Form,
   FormItem,
   FormLabel,
   FormControl,
   FormMessage,
   FormField,
+  type FormItemProps,
+  type FormLabelProps,
+  type FormControlProps,
+  type FormMessageProps
+} from "./Form";
+
+export {
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  FormField
+};
+
+export type {
+  FormItemProps,
+  FormLabelProps,
+  FormControlProps,
+  FormMessageProps
 }; 

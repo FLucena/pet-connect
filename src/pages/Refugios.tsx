@@ -23,7 +23,7 @@ const Shelters: React.FC = () => {
 
       try {
         setIsLoadingShelters(true);
-        const response = await fetch('/api/shelters');
+        const response = await fetch('/.netlify/functions/shelters');
         
         if (!response.ok) {
           const errorText = await response.text();
@@ -63,7 +63,7 @@ const Shelters: React.FC = () => {
       setIsLoading(true);
       setError(null);
       
-      const response = await fetch('/api/shelters', {
+      const response = await fetch('/.netlify/functions/shelters', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Shelters: React.FC = () => {
       if (!response.ok) throw new Error('Failed to create shelter');
       
       // Refresh shelters list
-      const updatedResponse = await fetch('/api/shelters');
+      const updatedResponse = await fetch('/.netlify/functions/shelters');
       if (!updatedResponse.ok) throw new Error('Failed to fetch updated shelters');
       const updatedData = await updatedResponse.json();
       setShelters(updatedData);
