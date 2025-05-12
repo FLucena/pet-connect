@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShelterFormFieldProps } from '@/types/shelter';
+import FormError from '../FormError';
 
 const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
   label,
@@ -53,15 +54,7 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
           aria-describedby={error ? `${name}-feedback` : undefined}
         />
       )}
-      {error && (
-        <div 
-          id={`${name}-feedback`} 
-          className="mt-1 text-sm text-red-500"
-          role="alert"
-        >
-          {error}
-        </div>
-      )}
+      <FormError message={error} />
     </div>
   );
 };

@@ -3,8 +3,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { NewShelterFormData } from '@/types/shelter';
-import ShelterFormField from '@/components/ShelterForm/ShelterFormField';
-import ShelterFormSection from '@/components/ShelterForm/ShelterFormSection';
+import GeneralInfoSection from './sections/GeneralInfoSection';
+import AddressSection from './sections/AddressSection';
+import ContactSection from './sections/ContactSection';
+import SocialMediaSection from './sections/SocialMediaSection';
+import ModalFooter from './components/ModalFooter';
 
 interface ShelterRegistrationFormProps {
   isOpen: boolean;
@@ -22,10 +25,10 @@ const schema = yup.object().shape({
     city: yup.string().required('La ciudad es requerida'),
     state: yup.string().required('La provincia es requerida'),
     postalCode: yup.string().required('El código postal es requerido'),
-    country: yup.string().default('Argentina'),
+    country: yup.string().required('El país es requerido'),
     coordinates: yup.object().shape({
-      latitude: yup.number().optional(),
-      longitude: yup.number().optional(),
+      lat: yup.number().optional(),
+      lng: yup.number().optional(),
     }).optional(),
   }),
   contact: yup.object().shape({
@@ -33,36 +36,18 @@ const schema = yup.object().shape({
     email: yup.string().email('El email no es válido').required('El email es requerido'),
     website: yup.string().url('La URL no es válida').optional(),
     socialMedia: yup.object().shape({
-      facebook: yup.string().url('La URL no es válida').optional(),
-      instagram: yup.string().url('La URL no es válida').optional(),
-      twitter: yup.string().url('La URL no es válida').optional(),
-    }),
+      facebook: yup.string().optional(),
+      instagram: yup.string().optional(),
+      twitter: yup.string().optional(),
+    }).optional(),
   }),
   capacity: yup.object().shape({
-    total: yup.number().required(),
-    current: yup.number().required(),
-    available: yup.number().required(),
-  }),
-  facilities: yup.object().shape({
-    indoor: yup.boolean().required(),
-    outdoor: yup.boolean().required(),
-    medical: yup.boolean().required(),
-    training: yup.boolean().required(),
-    description: yup.string().optional(),
-  }),
-  staff: yup.object().shape({
-    total: yup.number().required(),
-    volunteers: yup.number().required(),
-    roles: yup.array().of(yup.string()).required(),
-  }),
-  animals: yup.object().shape({
-    total: yup.number().required(),
-    byType: yup.object().shape({
-      perros: yup.number().required(),
-      gatos: yup.number().required(),
-    }).required(),
+    total: yup.number().required('La capacidad total es requerida'),
+    current: yup.number().required('La capacidad actual es requerida'),
+    available: yup.number().required('La capacidad disponible es requerida'),
   }),
   services: yup.array().of(yup.string()).default([]),
+  images: yup.array().of(yup.string()).default([]),
 }) as yup.ObjectSchema<NewShelterFormData>;
 
 const defaultValues: NewShelterFormData = {
@@ -74,10 +59,10 @@ const defaultValues: NewShelterFormData = {
     city: '',
     state: '',
     postalCode: '',
-    country: 'Argentina',
+    country: '',
     coordinates: {
-      latitude: 0,
-      longitude: 0,
+      lat: 0,
+      lng: 0,
     },
   },
   contact: {
@@ -91,10 +76,8 @@ const defaultValues: NewShelterFormData = {
     },
   },
   capacity: { total: 0, current: 0, available: 0 },
-  facilities: { indoor: false, outdoor: false, medical: false, training: false, description: '' },
-  staff: { total: 0, volunteers: 0, roles: [] },
-  animals: { total: 0, byType: { perros: 0, gatos: 0 } },
   services: [],
+  images: [],
 };
 
 const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
@@ -153,7 +136,7 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
     <>
       {/* Backdrop */}
       <div 
-        className="modal-backdrop fade show bg-dark bg-opacity-75"
+        className="modal-backdrop fade show bg-dark bg-opacity-75 position-fixed top-0 start-0 w-100 h-100"
         onClick={handleClose}
       />
       
@@ -161,8 +144,8 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
       <div className="modal fade show d-block" tabIndex={-1}>
         <div className="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
           <div className="modal-content border-0 shadow-lg rounded-3">
-            <div className="modal-header bg-primary text-white rounded-top-3">
-              <h5 className="modal-title fw-bold mb-0">Registrar Nuevo Refugio</h5>
+            <div className="modal-header bg-primary text-white rounded-top-3 py-3">
+              <h5 className="modal-title fw-bold mb-0 fs-4">Registrar Nuevo Refugio</h5>
               <button
                 type="button"
                 className="btn-close btn-close-white"
@@ -171,181 +154,20 @@ const ShelterRegistrationForm: React.FC<ShelterRegistrationFormProps> = ({
               />
             </div>
 
-            <div className="modal-body p-4">
+            <div className="modal-body p-4 bg-light">
               <form onSubmit={handleSubmit(handleFormSubmit)} className="needs-validation" noValidate>
-                <ShelterFormSection title="Información General">
-                  <div className="row g-3">
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Nombre"
-                        type="text"
-                        register={register}
-                        name="name"
-                        error={errors.name?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Descripción"
-                        type="textarea"
-                        register={register}
-                        name="description"
-                        error={errors.description?.message}
-                        required
-                      />
-                    </div>
-                  </div>
-                </ShelterFormSection>
-
-                <ShelterFormSection title="Dirección">
-                  <div className="row g-3">
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Calle"
-                        type="text"
-                        register={register}
-                        name="location.address"
-                        error={errors.location?.address?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Ciudad"
-                        type="text"
-                        register={register}
-                        name="location.city"
-                        error={errors.location?.city?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="Provincia"
-                        type="text"
-                        register={register}
-                        name="location.state"
-                        error={errors.location?.state?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="Código Postal"
-                        type="text"
-                        register={register}
-                        name="location.postalCode"
-                        error={errors.location?.postalCode?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="País"
-                        type="text"
-                        register={register}
-                        name="location.country"
-                        error={errors.location?.country?.message}
-                        required
-                      />
-                    </div>
-                  </div>
-                </ShelterFormSection>
-
-                <ShelterFormSection title="Contacto">
-                  <div className="row g-3">
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Teléfono"
-                        type="tel"
-                        register={register}
-                        name="contact.phone"
-                        error={errors.contact?.phone?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <ShelterFormField
-                        label="Email"
-                        type="email"
-                        register={register}
-                        name="contact.email"
-                        error={errors.contact?.email?.message}
-                        required
-                      />
-                    </div>
-                    <div className="col-12">
-                      <ShelterFormField
-                        label="Sitio Web"
-                        type="url"
-                        register={register}
-                        name="contact.website"
-                        error={errors.contact?.website?.message}
-                      />
-                    </div>
-                  </div>
-                </ShelterFormSection>
-
-                <ShelterFormSection title="Redes Sociales">
-                  <div className="row g-3">
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="Facebook"
-                        type="url"
-                        register={register}
-                        name="contact.socialMedia.facebook"
-                        error={errors.contact?.socialMedia?.facebook?.message}
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="Instagram"
-                        type="url"
-                        register={register}
-                        name="contact.socialMedia.instagram"
-                        error={errors.contact?.socialMedia?.instagram?.message}
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <ShelterFormField
-                        label="Twitter"
-                        type="url"
-                        register={register}
-                        name="contact.socialMedia.twitter"
-                        error={errors.contact?.socialMedia?.twitter?.message}
-                      />
-                    </div>
-                  </div>
-                </ShelterFormSection>
+                <GeneralInfoSection register={register} errors={errors} />
+                <AddressSection register={register} errors={errors} />
+                <ContactSection register={register} errors={errors} />
+                <SocialMediaSection register={register} errors={errors} />
               </form>
             </div>
 
-            <div className="modal-footer bg-light border-top rounded-bottom-3">
-              <button
-                type="button"
-                className="btn btn-outline-secondary px-4"
-                onClick={handleClose}
-                disabled={isLoading}
-              >
-                Cancelar
-              </button>
-              <button
-                type="submit"
-                className="btn btn-primary px-4"
-                onClick={handleSubmit(handleFormSubmit)}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
-                    Registrando...
-                  </>
-                ) : (
-                  'Registrar Refugio'
-                )}
-              </button>
-            </div>
+            <ModalFooter
+              onClose={handleClose}
+              onSubmit={handleSubmit(handleFormSubmit)}
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </div>

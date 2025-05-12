@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom';
-import { Shelter } from '@/types/shelter';
 
 type NearbyShelterCardProps = {
-  shelter: Shelter;
+  shelter: {
+    id: string;
+    name: string;
+    description: string;
+    photos: string[];
+    location: {
+      address: string;
+      city: string;
+      state: string;
+    };
+    reviews?: {
+      rating: number;
+      count: number;
+    };
+  };
 };
 
 const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
@@ -35,7 +48,7 @@ const NearbyShelterCard = ({ shelter }: NearbyShelterCardProps) => {
       <div className="card-body">
         <h5 className="card-title">{shelter.name}</h5>
         <p className="card-text text-muted small mb-2">
-          {shelter.address?.city || shelter.location?.city}, {shelter.address?.province || shelter.location?.state}
+          {shelter.location.city}, {shelter.location.state}
         </p>
         <p className="card-text mb-3">
           {shelter.description.length > 100
