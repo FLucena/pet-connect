@@ -13,6 +13,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Preload critical routes and assets
 const preloadCriticalAssets = () => {
+  if (import.meta.env.PROD) {
+    // In production, we don't need to preload these as they're bundled
+    return;
+  }
+
   // Preload critical routes
   const routes = [
     '/pages/Inicio',

@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       chunkSizeWarningLimit: 1000,
+      sourcemap: mode === 'development',
       rollupOptions: {
         output: {
           manualChunks: (id) => {
@@ -52,6 +53,7 @@ export default defineConfig(({ mode }) => {
             }
           },
           chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
           assetFileNames: (assetInfo) => {
             const ext = assetInfo.name?.split('.').pop() || '';
             return ext === 'css' 
@@ -74,7 +76,8 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'import.meta.env.MODE': JSON.stringify(mode),
-      'process.env.NODE_ENV': JSON.stringify(mode)
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      'process.env.DISABLE_SW': JSON.stringify(mode === 'production')
     },
     optimizeDeps: {
       include: [
