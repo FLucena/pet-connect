@@ -1,6 +1,4 @@
-declare module 'vitest' {
-  export * from 'vitest/globals';
-}
+export {};
 
 interface MockEvent {
   httpMethod: string;

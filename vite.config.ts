@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { splitVendorChunkPlugin } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,60 +10,23 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [
-      react(),
-      splitVendorChunkPlugin()
+      react()
     ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src')
-      }
+      },
+      dedupe: ['react', 'react-dom']
     },
     build: {
       chunkSizeWarningLimit: 1000,
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: mode === 'production',
-          drop_debugger: mode === 'production'
-        }
-      },
+      sourcemap: mode === 'development',
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
-            // Vendor chunks
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-                return 'vendor-react';
-              }
-              if (id.includes('bootstrap')) {
-                return 'vendor-bootstrap';
-              }
-              return 'vendor';
-            }
-            
-            // Application chunks
-            if (id.includes('/components/')) {
-              return 'components';
-            }
-            if (id.includes('/contexts/')) {
-              return 'contexts';
-            }
-            if (id.includes('/services/')) {
-              return 'services';
-            }
-            if (id.includes('/hooks/')) {
-              return 'hooks';
-            }
-            if (id.includes('/utils/')) {
-              return 'utils';
-            }
-            if (id.includes('/styles/') || id.includes('.css')) {
-              return 'styles';
-            }
-          },
-          chunkFileNames: () => `assets/[name]-[hash].js`,
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
           assetFileNames: (assetInfo) => {
-            const ext = assetInfo.names?.[0]?.split('.').pop() || '';
+            const ext = assetInfo.name?.split('.').pop() || '';
             return ext === 'css' 
               ? 'assets/css/[name]-[hash][extname]'
               : 'assets/[name]-[hash][extname]';
@@ -73,18 +35,20 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
+      port: 5173,
       proxy: {
-        '/api': {
+        '/.netlify/functions': {
           target: 'http://localhost:8888',
           changeOrigin: true,
           secure: false,
           ws: true,
-          rewrite: (path) => path.replace(/^\/api/, '/.netlify/functions'),
         },
       },
     },
     define: {
-      'import.meta.env.MODE': JSON.stringify(mode)
+      'import.meta.env.MODE': JSON.stringify(mode),
+      'process.env.NODE_ENV': JSON.stringify(mode),
+      'process.env.DISABLE_SW': JSON.stringify(mode === 'production')
     },
     optimizeDeps: {
       include: [
@@ -92,7 +56,9 @@ export default defineConfig(({ mode }) => {
         'react-dom',
         'react-router-dom',
         'bootstrap'
-      ]
-    }
+      ],
+      dedupe: ['react', 'react-dom']
+    },
+    base: '/'
   }
 })
