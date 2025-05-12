@@ -11,7 +11,7 @@ const Shelters: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [shelters, setShelters] = useState<Shelter[]>([]);
-  const [useMockData, setUseMockData] = useState(true); // Always start with mock data
+  const [useMockData, setUseMockData] = useState(import.meta.env.MODE === 'development');
   const [isLoadingShelters, setIsLoadingShelters] = useState(false);
 
   useEffect(() => {
