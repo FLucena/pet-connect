@@ -11,6 +11,7 @@ interface ShelterFormFieldProps {
   placeholder?: string;
   register: UseFormRegister<NewShelterFormData>;
   name: Path<NewShelterFormData>;
+  className?: string;
 }
 
 const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
@@ -22,11 +23,12 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
   placeholder,
   register,
   name,
+  className,
 }) => {
   const isTextarea = type === 'textarea';
   const inputClassName = `w-full px-4 py-2 mt-1 text-gray-700 bg-white border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
     error ? 'border-red-500' : 'border-gray-300 hover:border-gray-400'
-  }`;
+  } ${className || ''}`;
 
   return (
     <div className="mb-6">
@@ -56,7 +58,11 @@ const ShelterFormField: React.FC<ShelterFormFieldProps> = ({
         />
       )}
       {error && (
-        <div id={`${name}-feedback`} className="mt-1 text-sm text-red-500">
+        <div 
+          id={`${name}-feedback`} 
+          className="mt-2 px-3 py-2 text-sm text-white bg-red-500 rounded-md shadow-sm"
+          role="alert"
+        >
           {error}
         </div>
       )}

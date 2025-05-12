@@ -58,3 +58,14 @@ body {
     border: 2px solid CanvasText;
   }
 }
+
+.form-error {
+  color: #dc3545 !important;
+  background: #fff0f0;
+  font-weight: 600;
+  margin-top: 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(220,53,69,0.05);
+  font-size: 16px;
+}

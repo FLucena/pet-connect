@@ -3,10 +3,35 @@ import { Link } from 'react-router-dom';
 import { Shelter } from '@/types/shelter';
 
 interface ShelterCardProps {
-  shelter: Shelter;
+  shelter: {
+    id: string;
+    name: string;
+    description: string;
+    photos: string[];
+    address: {
+      street: string;
+      city: string;
+      province: string;
+    };
+    contact: {
+      phone: string;
+      email: string;
+      socialMedia?: {
+        facebook?: string;
+        instagram?: string;
+        twitter?: string;
+      };
+    };
+    reviewStats?: {
+      rating: number;
+      count: number;
+    };
+  };
+  onUpdate?: (data: Partial<Shelter>) => void;
+  onDelete?: () => void;
 }
 
-const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
+const ShelterCard: React.FC<ShelterCardProps> = ({ shelter, onUpdate, onDelete }) => {
   const renderStars = (rating: number | undefined) => {
     const stars = [];
     const ratingValue = rating || 0;
@@ -26,11 +51,7 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
   };
 
   return (
-    <Link
-      to={`/refugios/${shelter.id}`}
-      className="card h-100 text-decoration-none text-dark hover-shadow"
-      style={{ transition: 'all 0.3s ease' }}
-    >
+    <div className="card h-100 text-decoration-none text-dark hover-shadow position-relative">
       <div className="position-relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
         {shelter.photos?.[0] ? (
           <img
@@ -58,10 +79,10 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
           <h5 className="card-title mb-0">{shelter.name}</h5>
-          {shelter.reviews && (
+          {shelter.reviewStats && (
             <div className="d-flex align-items-center">
-              {renderStars(shelter.reviews.rating)}
-              <span className="ms-1 small text-secondary">({shelter.reviews.count || 0})</span>
+              {renderStars(shelter.reviewStats.rating)}
+              <span className="ms-1 small text-secondary">({shelter.reviewStats.count || 0})</span>
             </div>
           )}
         </div>
@@ -80,10 +101,39 @@ const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
             <i className="bi bi-telephone me-1"></i>
             {shelter.contact?.phone}
           </div>
-          <span className="text-primary fw-medium">Ver detalles</span>
+          <div className="d-flex gap-2">
+            {onUpdate && (
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onUpdate(shelter as unknown as Partial<Shelter>);
+                }}
+              >
+                <i className="bi bi-pencil"></i>
+              </button>
+            )}
+            {onDelete && (
+              <button
+                className="btn btn-sm btn-outline-danger"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onDelete();
+                }}
+              >
+                <i className="bi bi-trash"></i>
+              </button>
+            )}
+            <Link
+              to={`/refugios/${shelter.id}`}
+              className="btn btn-sm btn-primary"
+            >
+              Ver detalles
+            </Link>
+          </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

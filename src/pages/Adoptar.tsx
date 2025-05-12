@@ -102,6 +102,7 @@ const Adoptar: React.FC = () => {
     searchTerm: ''
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentSort, setCurrentSort] = useState('reciente');
   const isMobile = useIsMobile();
 
   // Effects
@@ -144,7 +145,7 @@ const Adoptar: React.FC = () => {
 
   // Memoized values
   const filteredPets = useMemo(() => {
-    return pets.filter(pet => {
+    let filtered = pets.filter(pet => {
       // Type filter
       const matchesType = !activeFilters.type || 
         pet.type.toLowerCase() === activeFilters.type.toLowerCase();
@@ -176,7 +177,31 @@ const Adoptar: React.FC = () => {
       return matchesType && matchesSize && matchesSex && 
              matchesAge && matchesBreed && matchesStatus && matchesSearchTerm;
     });
-  }, [pets, activeFilters]);
+
+    // Sorting logic
+    switch (currentSort) {
+      case 'nombre':
+        filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'edad':
+        filtered = filtered.sort((a, b) => {
+          // youngest to oldest
+          const aMonths = a.age.years * 12 + a.age.months;
+          const bMonths = b.age.years * 12 + b.age.months;
+          return aMonths - bMonths;
+        });
+        break;
+      case 'tamaño':
+        // Implement your own size sorting logic if needed
+        break;
+      case 'reciente':
+      default:
+        filtered = filtered.sort((a, b) => new Date(b.registrationDate).getTime() - new Date(a.registrationDate).getTime());
+        break;
+    }
+
+    return filtered;
+  }, [pets, activeFilters, currentSort]);
 
   const currentPets = useMemo(() => {
     const lastPetIndex = currentPage * PETS_PER_PAGE;
@@ -215,6 +240,9 @@ const Adoptar: React.FC = () => {
         <PetFilters 
           onFilterChange={handleFilterChange}
           onReset={handleResetFilters}
+          values={activeFilters}
+          currentSort={currentSort}
+          onSortChange={setCurrentSort}
         />
 
         {isLoading ? (
@@ -235,17 +263,6 @@ const Adoptar: React.FC = () => {
               <p className="mb-0 fs-6 fs-sm-5">
                 <strong>{filteredPets.length}</strong> mascotas encontradas
               </p>
-              {filteredPets.length > 0 && (
-                <div className="d-flex align-items-center w-100 w-sm-auto">
-                  <span className="me-2 d-none d-sm-inline">Ordenar por:</span>
-                  <select className="form-select form-select-sm w-100 w-sm-auto">
-                    <option value="reciente">Más recientes</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="edad-asc">Edad (menor a mayor)</option>
-                    <option value="edad-desc">Edad (mayor a menor)</option>
-                  </select>
-                </div>
-              )}
             </div>
 
             {/* Pet cards */}

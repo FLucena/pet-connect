@@ -94,6 +94,7 @@ export interface PetFilterValues {
   sexo?: Sex | '';
   raza?: string;
   estado?: Status | '';
+  [key: string]: string | undefined; // Changed from unknown to string | undefined
 }
 
 // Backend/API filter type (used for API calls, etc.)

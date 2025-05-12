@@ -75,7 +75,7 @@ export interface Shelter {
   staff: Staff;
   animals: Animals;
   photos: string[];
-  status: 'active' | 'inactive';
+  status: 'active' | 'inactive' | 'pending';
   registrationDate: string;
   lastUpdate: string;
   coordinates?: {
@@ -89,10 +89,15 @@ export interface Shelter {
     rescuedAnimals: number;
     sterilizedAnimals: number;
   };
-  reviews?: {
+  reviewStats?: {
     rating: number;
     count: number;
   };
+  createdAt: string;
+  updatedAt: string;
+  images: string[];
+  rating?: number;
+  reviewCount?: number;
 }
 
 export interface SheltersData {
@@ -103,13 +108,30 @@ export interface NewShelterFormData {
   name: string;
   type: string;
   description: string;
-  contact: Contact;
-  location: Location;
-  capacity: Capacity;
-  facilities: Facilities;
+  contact: {
+    email: string;
+    phone: string;
+    website?: string;
+    socialMedia?: SocialMedia;
+  };
+  location: {
+    city: string;
+    state: string;
+    address: string;
+    postalCode: string;
+    country: string;
+    coordinates?: {
+      lat: number;
+      lng: number;
+    };
+  };
   services: string[];
-  staff: Staff;
-  animals: Animals;
+  capacity: {
+    total: number;
+    current: number;
+    available: number;
+  };
+  images: string[];
 }
 
 export interface ShelterFormFieldProps {
