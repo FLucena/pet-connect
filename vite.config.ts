@@ -23,35 +23,6 @@ export default defineConfig(({ mode }) => {
       sourcemap: mode === 'development',
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-                return 'vendor-react';
-              }
-              if (id.includes('bootstrap')) {
-                return 'vendor-bootstrap';
-              }
-              return 'vendor';
-            }
-            if (id.includes('/components/')) {
-              return 'components';
-            }
-            if (id.includes('/contexts/')) {
-              return 'contexts';
-            }
-            if (id.includes('/services/')) {
-              return 'services';
-            }
-            if (id.includes('/hooks/')) {
-              return 'hooks';
-            }
-            if (id.includes('/utils/')) {
-              return 'utils';
-            }
-            if (id.includes('/styles/') || id.includes('.css')) {
-              return 'styles';
-            }
-          },
           chunkFileNames: 'assets/[name]-[hash].js',
           entryFileNames: 'assets/[name]-[hash].js',
           assetFileNames: (assetInfo) => {
